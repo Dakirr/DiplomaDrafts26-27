@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>local.diploma.colima</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/colima</string>
+        <string>start</string>
+        <string>--arch</string>
+        <string>aarch64</string>
+        <string>--vm-type</string>
+        <string>vz</string>
+        <string>--vz-rosetta</string>
+        <string>--dns=8.8.8.8</string>
+        <string>--dns=1.1.1.1</string>
+        <string>--network-address</string>
+        <string>--network-host-addresses</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/local.diploma.colima.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/local.diploma.colima.error.log</string>
+</dict>
+</plist>

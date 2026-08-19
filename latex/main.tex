@@ -1,0 +1,40 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage[margin=2.5cm]{geometry}
+
+\title{Название работы}
+\author{К. И. Дик}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Введение}
+
+Начните писать здесь.
+
+\begingroup
+\renewcommand{\refname}{Список использованных источников}
+\let\section\subsection
+\addcontentsline{toc}{subsection}{\refname}
+\begin{thebibliography}{9}
+
+\bibitem{semenov-soprunov}
+Семёнов, А.~Л. Решётка определимости (редуктов) для целых чисел с операцией
+следования / А.~Л. Семёнов, С.~Ф. Сопрунов. --- Текст : электронный~//
+Известия Российской академии наук. Серия математическая. --- 2021. ---
+Т.~85, №~6. --- С.~245--258. --- DOI~10.4213/im9107. ---
+URL: \url{https://www.mathnet.ru/rus/im9107}
+(дата обращения: 19.08.2026).
+
+\end{thebibliography}
+\endgroup
+
+\end{document}
