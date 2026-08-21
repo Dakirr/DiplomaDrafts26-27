@@ -9,3 +9,6 @@
 *.run.xml
 *.synctex.gz
 *.toc
+.src-files.tex
+.src-files.tex.tmp
+.vscode

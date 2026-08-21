@@ -2,6 +2,7 @@ FROM debian:bookworm-slim
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends \
+        chktex \
         latexmk \
         texlive-fonts-recommended \
         texlive-lang-cyrillic \
@@ -11,4 +12,4 @@ RUN apt-get update \
 
 WORKDIR /work
 
-CMD ["latexmk", "-pdf", "-interaction=nonstopmode", "-halt-on-error", "main.tex"]
+CMD ["sh", "scripts/render.sh"]

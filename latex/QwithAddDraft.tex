@@ -1,0 +1,459 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,amssymb,amsfonts,enumerate,latexsym, amsthm, textcomp}
+\usepackage{xcolor, hyperref}
+\usepackage{indentfirst}
+\usepackage[matrix, arrow, curve]{xy} % Для коммутативных диаграмм
+%\usepackage[cp1251]{inputenc} 
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{cancel}
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+%\usepackage{russian}
+
+\textheight=270mm
+\textwidth=190mm
+\voffset=-40mm
+\hoffset=-35mm
+\pagestyle{empty}
+
+\sloppy
+\emergencystretch=5pt
+
+\newtheorem{theorem}{{\indent \bf Теорема}}
+\newtheorem*{basicTheorem}{{\indent \bf Основная теорема}}
+\newtheorem*{definition}{{\indent \bf Определение}}
+\newtheorem{lemma}[theorem]{{\indent \bf Лемма}}
+\newtheorem{corollary}[theorem]{{\indent \bf Следствие}}
+
+\theoremstyle{definition}
+
+\newcommand{\Rarr}{\Rightarrow}
+\newcommand{\Lrarr}{\Leftrightarrow} 
+
+% Цвета
+\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+\definecolor{urlcolor}{HTML}{0000FF} % цвет гиперссылок
+\definecolor{citecolor}{HTML}{000000} % цвет ссылки на статью
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+
+% Пробелы, отступы и выделения
+\definecolor{todocolor}{HTML}{FF4500} % цвет todo
+\newcommand{\TODO}[1]{\textcolor{todocolor}{ЗДЕСЬ #1}}
+\newcommand{\bs}{\bigskip}
+\newcommand{\ms}{\middleskip}
+\newcommand{\sms}{\smallskip}
+
+% Для ТЧ 
+\newcommand{\m}[1]{\mathbb{#1}} % Математические буквы
+\newcommand{\Z}[1]{\mathbb{Z}_{#1}} % Кольцо вычетов
+\newcommand{\Zn}{\Z{n}} % Кольцо вычетов
+\newcommand{\GZ}[1]{\mathbb{Z}^*_{#1}} % Группа обратимых вычетов
+\newcommand{\GZn}{\GZ{n}} % Группа обратимых вычетов
+
+% Для матлогики
+% \neg % НЕ - ОаТРИЦАНИЕ
+\newcommand{\wed}{\wedge} % И - КОНЪЮНКЦИЯ
+% \vee % ИЛИ - ДИЗЪЮНКЦИЯ
+\newcommand{\rarr}{\rightarrow} % ЕСЛИ ..., ТО - ИМПЛИКАЦИЯ
+\newcommand{\lrarr}{\leftrightarrow} % РАВНОСИЛЬНО - ЭКВИВАЛЕНЦИЯ
+
+% Определение множества
+\newcommand{\defineset}[2]{\left\{
+	\left.
+	#1
+	\right\vert
+	#2
+	\right\}}
+
+% Кусочное определение функции
+\newcommand{\definefuntwo}[4]{
+\begin{cases}
+	#1, & #2; \\
+	#3, & #4.
+\end{cases}
+}
+\newcommand{\definefunthree}[6]{
+	\begin{cases}
+		#1, & #2; \\
+		#3, & #4; \\
+		#5, & #6.
+	\end{cases}
+}
+
+\title{Решение задач по теме <<Теория определимости>>}
+\author{Кирилл Дик, Константин Зюбин}
+% Если выхотите как-нибудь прокомментировать эту статью, вы можете оставить комментарий с подписью такой, как написанная после этого комментария ~KonstantinZyu
+\begin{document}
+	\maketitle
+
+	\begin{abstract}
+		В этом файле будут записаны результаты исследования структуры $ \langle \mathbb{Q}, +\rangle $ по теме <<Теория определимости>>.
+	\end{abstract}  
+	
+	\section{Отношения}
+	
+	\subsection{Определения}
+	
+	\begin{enumerate}
+	    
+	    \item $ \mathbf{x + y = z} $. Естественное сложение рациональных чисел.
+	
+    	\item $\mathbf{x + y = a + b} \leftrightharpoons \exists t (x + y = t \wed a + b = t) $.
+    	
+    	\item $\mathbf{\pm x \pm y = z} \leftrightharpoons x + y = z \vee x + z = y \vee y + z = x \vee (\exists t, s (x + y = t \wed z + t = s \wed s + s = s)) $.
+    	
+    	\item $ \mathbf{x = qy} $. Пусть $ q = \dfrac{m}{n} $, где $ m \in \mathbb{Z}, m \neq 0, n \in \mathbb{N} $. Определим отношение в двух случаях:
+	
+	\begin{enumerate}
+		
+		\item Путь $ m > 0 $. Тогда определим отношение следующей формулой:
+		
+		$ x = qy \leftrightharpoons \exists x_2, \ldots x_n, y_2, \ldots, y_{m - 1} (x + x = x_2 \wed x + x_2 = x_3 \wed \ldots \wed x + x_{n - 1} = x_n \wed y + y = y_2 \wed y + y_2 = y_3 \wed \ldots \wed y + y_{m - 2} = y_{m - 1} \wed y + y_{m - 1} = x_n) $
+		
+		\item Путь $ m < 0 $. Тогда определим отношение следующей формулой:
+		
+		$ x = qy \leftrightharpoons \exists x_2, \ldots x_n, y_2, \ldots, y_{|m|}, t (x + x = x_2 \wed x + x_2 = x_3 \wed \ldots \wed x + x_{n - 1} = x_n \wed y + y = y_2 \wed y + y_2 = y_3 \wed \ldots \wed y + y_{|m| - 2} = y_{|m| - 1} \wed y + y_{|m| - 1} = y_{|m|} \wed x_n + y_{|m|} = t \wed t + t = t) $
+		
+	\end{enumerate}
+	
+	\item $ M_{q}(x, y, a, b) \leftrightharpoons (x = qy \wed a = qb) \vee (y = qx \wed b = qa) $.
+	
+	\item $ A_{q}(x, y) \leftrightharpoons x = qy \vee y = qx $.
+	
+	\item $ |x| = |qy| \leftrightharpoons x = qy \vee x = (-q)y $. Отношения $ x = qy $ и $ x = (-q)y $ определимы через отношение $ x + y = z $.
+	
+	\TODO{написать определние $ |x| = |qy| $ через $\pm x \pm y = z$.}
+	
+	\item $ M_{|q|}(x, y, a, b) \leftrightharpoons (|x| = |qy| \wed |a| = |qb|) \vee (|y| = |qx| \wed |b| = |qa|) $.
+	
+	\item $ A_{|q|}(x, y) \leftrightharpoons |x| = |qy| \vee |y| = |qx| $.  
+
+	\item $ |x| = |y| \leftrightharpoons x = y \vee \exists z (x + y = z \wed z + z = z) $.
+	
+	\item $ x = 0 \leftrightharpoons x + x = x $.
+	    
+	\end{enumerate}
+	
+	\subsection{Диаграмма решётки отношений}
+	
+	$$ \xymatrix{
+		& & x + y = z 
+		\ar@{->}[dll] \ar@{->}[d] \ar@{->}[rr] && z = \pm x \pm y \ar@{->}[d]& \\
+		x = qy \ar@{->}[d] \ar@{->}[r] & 
+		x = q^ny \ar@{->}[d] & 
+		x + y = a + b & 
+		|x| = |q^ny| \ar@{->}[d] & 
+		|x| = |qy| \ar@{->}[d] \ar@{->}[l] \\
+		M_{q} \ar@{->}[d] \ar@{->}[r] &
+		M_{q^n} \ar@{->}[d] & &
+		M_{|q^n|} \ar@{->}[d] &
+		M_{|q|} \ar@{->}[d] \ar@{->}[l] \\
+		A_{q} \ar@{->}[d] \ar@{->}[r] &
+		A_{q^n} \ar@{->}[ld] & &
+		A_{|q^n|} \ar@{->}[rd] & 
+		A_{|q|} \ar@{->}[d] \ar@{->}[l] \\
+		x = 0 & & & & 
+		|x| = |y| \ar@{->}[llll] \\
+	}$$
+	
+	\subsection{Группа автоморфизмов}
+	    \subsubsection{$\mathbf{x + y = z:}$}
+	    
+	    Пусть $ G_{+} = \defineset{f \colon \mathbb{Q} \longrightarrow \mathbb{Q}}{f(x) = kx, k \in \mathbb{Q}} $ --- множество функций с операцией композиции. 
+    
+    \begin{lemma}
+    	Группа автоморфизмов, сохраняющих отношение $ x + y = z $, в точности совпадает с $ G_{+} $.
+    \end{lemma}
+    
+    \textbf{Доказательство.}
+    
+    Покажем, что для любого автоморфизма $ f $, сохраняющего отношение $ x + y = z $, верно, что $ f(q)~=~qc $ для любого рационального $ q $ и некоторого ненулевого рационального $ c $.
+    
+    Для этого докажем по индукции, то для любых натурального $ k $ и рационального $ q $ выполнено равенство $ f(kq) = kf(q) $.
+    
+    База индукции: $ k = 1 $ и требуемое $ f(q) = f(q) $ верно.
+    
+    Шаг индукции. Автоморфизм $ f $ сохраняет отношение $ x + y = z $. Поэтому $ f((k-1)q) + f(q) = f(kq) $. По индукционному предположению $ f((k-1)q) = (k-1)f(q) $. Тогда $ f(kq) = f((k-1)q) + f(q) = (k-1)f(q) + f(q) = kf(q) $.
+    
+    Покажем, что $ f $ сохраняет 0: $ f(0) + f(0) = f(0) \Longrightarrow f(0)=0  $. Отсюда следует, что $ f $ представляет собой нечётную функцию: $ f(-q) + f(q) = f(0) = 0  \Longrightarrow f(-q) = -f(q)$. Поэтому равенство $ f(kq) = kf(q) $ выполнено для любых рационального $ q $ и целого $ k $.
+    
+    Любое рациональное число $ q $ может быть представлено в виде $ \frac{m}{n} $, где $ m \in \mathbb{Z} $, $ n \in N $. Тогда $ f(q) = f(\frac{m}{n}) = mf(\frac{1}{n}) $. Далее, $ f(\frac{m}{n}) \cdot n = mf(\frac{1}{n}) \cdot n = m \cdot nf(\frac{1}{n}) = mf(1) $. Отсюда $ f(q) =  f(\frac{m}{n}) = \frac{m}{n}f(1) = qf(1) $. Так как $ f $ --- автоморфизм и $ f(0) = 0 $, то $ f(1) \neq 0 $. Таким образом, для любого рационального $ q $ имеет место равенство $ f(q) = qc $, где $ c = f(1) \neq 0 $.
+    
+    Несложно проверить, что для любого рационального $ c \neq 0 $ автоморфизм $ f(q) = qс $ сохраняет отношение $ x + y = z $. Действительно, $ x + y = z \Longleftrightarrow xс + yс = zс \Longleftrightarrow f(x) + f(y) = f(z) $.
+    $ \square $
+    
+    \begin{lemma}
+    	Группа $ G_{+} $ изоморфна мультипликативной группе $ \mathbb{Q}^* $.
+    \end{lemma}
+    
+    \textbf{Доказательство.}
+    
+    Рассмотрим отображение $ g \colon G_{+} \longrightarrow \mathbb{Q}^* $, определяемое по следующему правилу. Если $ f(x) = cx $, где $ c \neq 0 $ --- рациональное, то $ g(f) = c $.
+    
+    Покажем, что групповые операции сохраняются при данном отображении и что существует обратное отображение. 
+    
+    Пусть $ f_1(x)=c_1x $ и $ f_2(x)=c_2x $. Тогда $ (f_1 \circ f_2)(x) = f_1(f_2(x)) = f_1(c_2x) = c_1c_2 \cdot x $. Отсюда $ g(f_1 \circ f_2) = c_1c_2 = g(f_1) \cdot g(f_2) $.
+    
+    Обратным к $ g $ будет являться отображение, которое ненулевуму рациональному числу $ с $ ставит в соответствие функцию $ f(x) = cx $. 
+    
+    Таким образом, отображение $ g $ --- изоморфизм. $ \square $ 
+       
+ 
+	\subsubsection{$\mathbf{x + y = a + b:}$}
+	   Рассмотрим автоморфизм $f \colon \mathbb{Q} \longrightarrow \mathbb{Q}$, сохраняющий $x + y = a + b$. Тогда для любых $a, b, x, y \in \mathbb{Q}$ верно $f(a) + f(b) = f(x) + f(y)$. Рассмотрим некоторые $x, y, a, b$:
+	    \begin {enumerate}
+	    \item $\mathbf{x = -y}$, $\mathbf{a = b = 0}$:
+	    
+	    $f(x) + f(-x) = 2\cdot f(0)$
+	    
+	    
+	   \item \textbf{Докажем по индукции, что} $\mathbf{f(k\cdot x) = k \cdot (f(x) - f(0)) + f(0)}$ $\mathbf{(k > 0)}$:
+	   
+	   \textbf{База для } $\mathbf{k = 2:}$ $f(2) = 2\cdot f(1) - f(0) = 2 \cdot (f(1) - f(0)) + f(0)$
+	   
+	   \textbf{Переход} $\mathbf{k \rightarrow k+1}$: $f(k \cdot x) = f((k-1)\cdot x) + f(x) - f(0) = (k-1) \cdot (f(x) - f(0)) + f(0) + f(x) - f(0) = k \cdot (f(x) - f(0)) + f(0)$
+	  
+	   
+	   
+	   
+	   \item $\mathbf{x = \frac{x}{k}, y = \frac{(k-1) \cdot x}{k}, a = x}$ $\mathbf{(k > 0)}$:
+	   
+	   $f(\frac{(k-1) \cdot x}{k}) + f(\frac{x}{k}) = (k-1) \cdot (f(\frac{x}{k}) - f(0)) + f(0) + f(\frac{x}{k}) = k\cdot f(\frac{x}{k}) - (k-2) \cdot f(0)$
+	   
+	   $f(\frac{(k-1) \cdot x}{k}) + f(\frac{x}{k}) = k\cdot f(\frac{x}{k}) - (k-2) \cdot f(0) = f(x) + f(0)$
+	   
+	   $k\cdot f(\frac{x}{k}) = f(x) + (k-1)\cdot f(0)$
+	   
+	   $f(\frac{x}{k}) = \frac{1}{k} \cdot (f(x) + (k-1)\cdot f(0)) = \frac{1}{k} \cdot (f(x) - f(0)) + f(0)$
+	   
+	   \item \textbf{Докажем, что для} $\mathbf{q \in \mathbb{Q}, q<0}$  $\mathbf{f(q \cdot x) = q \cdot (f(x) - f(0)) + f(0)}:$
+	   
+	   $f(q\cdot x) = 2 \cdot f(0) - f(-q \cdot x) = -(-q\cdot (f(x) - f(0)) + f(0)) + 2 \cdot f(0) = q \cdot (f(x) - f(0)) +f(0)$
+	   
+	   
+	   \end{enumerate}
+	   \textbf{Тогда для любого} $\mathbf{\frac{m}{n} \in \mathbb{Q}}$: 
+	   
+	   $f( \frac{m}{n}) = m\cdot (f(\frac{1}{n})-f(0)) + f(0) = m\cdot (\frac{1}{n}(f(1) - f(0)) + f(0)) +f(0) =
+	  \frac{m}{n} \cdot (f(1) - f(0)) + f(0)$
+	   
+	   \bigskip
+	   
+	   \subsubsection{Отношения, определимые через x = qy, и группы автоморфизмов, сохраняющие их}
+	   
+	   %Разобьем множество $\mathbb{Q}$ на счетное количество непересекающихся наборов $R_1, R_2 \dots$ следующим образом: для любого $x$ в одном наборе с ним будут находиться числа, представимые в виде $q^ax, a \in \mathbb{Z}$.
+	   
+	   Пусть $H = \defineset{q^a}{a \in \mathbb{Z}} $. Рассмотрим смежные классы  $ \mathbb{Q}^* $ по подгруппе $ H $.
+	   
+	   \begin{enumerate}
+	    \item $\mathbf{x = q\cdot y}$
+	   
+	    Для этого отношения автоморфизмы - это композиции домножений каждого числа в любых наборах на $q^a, a \in \mathbb{Z}$ и биекции $s(x)\colon \mathbb{Q} \longrightarrow \mathbb{Q}$ со свойством $s(q\cdot x) = q \cdot s(x)$, примененных к некоторым парам наборов.
+	    %Тут рисунок бы
+	   
+	    \item $\mathbf{x = q^n\cdot y}$
+	   
+	    Для этого отношения автоморфизмы - это композиция автоморфизмов для $x = q\cdot y$ и таких функций $f(x)$, примененных к отдельным наборам, что:
+	   
+	    $f(x) = q^{g(|x|_q \mod n)}\cdot \frac{x}{q^{|x|_q}}$, где $|x|_q$ - разность степеней вхождения $q$ в числитель и знаменатель $x$, $g(x)$ - биекция $\{1, 2, \dots, n-1 \} \longrightarrow \{1, 2, \dots , n-1 \}$
+	   
+	    \item $\mathbf{M_{q^n}(x, y, a, b)}$
+	   
+	    Для этого отношения автоморфизмы - это композиция автоморфизмов для $x = q^n \cdot y$ и функции $f(x) = \frac{x}{q^{2 \cdot |x|_q}}$, примененной ко всем наборам.
+	    
+	    \item $\mathbf{A_{q^n}(x, y)}$
+	   
+	    Для этого отношения автоморфизмы - это композиция автоморфизмов для $x = q^n \cdot y$ и функции $f(x) = \frac{x}{q^{2 \cdot |x|_q}}$, примененной к некоторым наборам.
+	    \bigskip
+	   \end{enumerate}
+
+	   
+	   % Здесь комментарии, аналогичные комментариям к предыдущему подразделу ~KonstantinZyu
+	    	   
+	   \subsubsection{Разобьем множество $\mathbb{Q}$ на счетное количество непересекающихся 2-наборов $R_1, R_2 \dots$ следующим образом: для любого $x$ в одном 2-наборе с ним будут находиться числа, представимые в виде $\pm q^n \cdot x$.
+	   Назовем слоями такого 2-набора пары чисел $y$ и $-y$.}
+	   %Можно записать текст выше более научным языком. Мне кажется, что получится несколько короче. Можно написать так: " Пусть $H = \defineset{(-1)^nq^a}{a \in \mathbb{Z}, n \in \{0, 1\}} $. Рассмотрим смежные классы  $ \mathbb{Q}^* $ по подгруппе $ H $. " (2-наборы R_i - и есть смежные классы). Слои - это просто противоположные рациональные числа. ~KonstantinZyu
+	   
+	   %Тут точно должна быть картинка
+	   \begin{enumerate}
+	    \item $\mathbf{|x| = |q\cdot y|}$
+	   
+	    Для этого отношения автоморфизмы - это композиции домножений каждого числа в любых 2-наборах на $q^a, a \in \mathbb{Z}$ и биекции $s(x)\colon \mathbb{Q} \longrightarrow \mathbb{Q}$ со свойством $s(q\cdot x) = \pm q \cdot s(x)$, примененных к некоторым парам 2-наборов. 
+	   
+	   
+	    \item $\mathbf{|x| = |q^n\cdot y|}$
+	   
+	    Для этого отношения автоморфизмы - это композиция автоморфизмов для $|x| = |q\cdot y|$ и таких функций $f(x)$, примененных к отдельным 2-наборам, что:
+	   
+	    $f(x) = q^{g(|x|_q \mod n)}\cdot \frac{x}{q^{|x|_q}}$, где $|x|_q$ - разность степеней вхождения $q$ в числитель и знаменатель $x$, $g(x)$ - биекция $\{1, 2, \dots, n-1 \} \longrightarrow \{1, 2, \dots , n-1 \}$
+	   
+	    \item $\mathbf{M_{|q^n|}(x, y, a, b)}$
+	   
+	    Для этого отношения автоморфизмы - это композиция автоморфизмов для $|x| = |q^n \cdot y|$ и функции $f(x) = \frac{x}{q^{2 \cdot |x|_q}}$, примененной ко всем 2-наборам.
+	    
+	    \item $\mathbf{A_{|q^n|}(x, y)}$
+	   
+	    Для этого отношения автоморфизмы - это композиция автоморфизмов для $|x| = |q^n \cdot y|$ и функции $f(x) = \frac{x}{q^{2 \cdot |x|_q}}$, примененной к некоторым наборам.
+	    \bigskip
+	   
+	    \item $\mathbf{|x| = |y|}$:
+	    Для этого отношения автоморфизмы - это любые биекции $f \colon \mathbb{Q} \longrightarrow \mathbb{Q}$ такие, что $f(x) = \pm f(x)$
+	
+	
+	    \item $\mathbf{x=0}$:
+	    Для этого отношения автоморфизмы - это любые биекции $f \colon \mathbb{Q} \longrightarrow \mathbb{Q}$ такие, что $f(0) = 0$
+	   
+	  \end{enumerate}
+	\subsection{Доказательства определимостей и неопределимостей}
+	\subsubsection{Опишем выведение одних отношений через другие:}
+	\begin{enumerate}
+	    \item $x =q\cdot y$ $\succeq$ $x = q^{a}\cdot y, a \in \textbf{Z}, a \ge 0$:
+	    Определим индукцией по $a$. 
+	    
+	    \textbf{База:} для $a = 0$ и $a = 1$ тривиально.
+	    
+	    \textbf{Переход:} $k \rightarrow k+1$:
+	    $x = q^{k+1}\cdot y \equiv \exists z ((x = q^{k}\cdot z)\wedge (z = q\cdot y)$ 
+	    
+	    
+	    
+	    \item $x =q\cdot y$ $\succeq$ $M_{q}(x, y, a, b)$:
+	    $ M_{q}(x, y, a, b) \leftrightharpoons (x = qy \wed a = qb) \vee (y = qx \wed b = qa) $
+	    
+	    
+	    \item $M_{q}(x, y, a, b)$ $\succeq$ $A_{q}(x, y)$:
+	    $A_{q}(x, y) \equiv M_{q}(x, y, x, y)$
+	    
+	    \item $M_{q}(x, y, a, b)$ $\succeq$ $M_{q^n}(x, y, a, b), n \in \mathbf{N}, n \ge 0$:
+	    Определим индукцией по $n$. 
+	    
+	    \textbf{База:} для $n = 0$ и $n = 1$ тривиально.
+	    
+	    \textbf{Переход:} $k \rightarrow k+1$:
+	    $M_{q^{k+1}}(x, y, a, b) \equiv \exists z, c ((M_{q^k}(x, z, a, c))\wedge (M_{q}(z, y, c, b)) \wedge \neg (M_{q^{k-2}}(x, y, a, b))$
+	    
+	    \item $A_{q}(x, y)$ $\succeq$ $A_{q^n}(x, y), n \in \mathbf{N}, n \ge 0$:
+	    Определим индукцией по $n$. 
+	    
+	    \textbf{База:} для $n = 0$ и $n = 1$ тривиально.
+	    
+	    \textbf{Переход:} $k \rightarrow k+1$:
+	    $A_{q^{k+1}}(x, y) \equiv \exists z ((A_{k}(x, z))\wedge A_{q}(z, y)) \wedge \neg (A_{q^{k-2}}(x, y))$
+	    
+	    
+	    
+	    
+	    \item $|x| =|q\cdot y$| $\succeq$ $|x| = |q^{a}\cdot y|, a \in \textbf{Z}, a \ge 0$:
+	    Определим индукцией по $a$. 
+	    
+	    \textbf{База:} для $a = 0$ и $a = 1$ тривиально.
+	    
+	    \textbf{Переход:} $k \rightarrow k+1$:
+	    $|x| = |q^{k+1}\cdot y| \equiv \exists z ((|x| = |q^{k}\cdot z|)\wedge (|z| = |q\cdot y|)$ 
+	    
+	    
+	    \item $|x| =|q\cdot y|$ $\succeq$ $M_{|q|}(x, y, a, b)$:
+	    $ M_{|q|}(x, y, a, b) \leftrightharpoons (|x| = |qy| \wed |a| = |qb|) \vee (|y| = |qx| \wed |b| = |qa|) $
+	    
+	    
+	    \item $A_{|q|}(x, y)$ $\succeq$ $M_{|q|}(x, y, a, b)$:
+	    $A_{|q|}(x, y) \equiv M_{|q|}(x, y, x, y)$
+	    
+	    \item $M_{|q|}(x, y, a, b)$ $\succeq$ $M_{|q^n|}(x, y, a, b), n \in \mathbf{N}, n \ge 0$:
+	    Определим индукцией по $n$. 
+	    
+	    \textbf{База:} для $n = 0$ и $n = 1$ тривиально.
+	    
+	    \textbf{Переход:} $k \rightarrow k+1$:
+	    $M_{|q^{k+1}|}(x, y, a, b) \equiv \exists z, c ((M_{|q^k|}(x, z, a, c))\wedge (M_{|q|}(z, y, c, b)) \wedge \neg (M_{|q^{k-2}|}(x, y, a, b))$
+	    
+	    \item $A_{|q|}(x, y)$ $\succeq$ $A_{|q^n|}(x, y), n \in \mathbf{N}, n \ge 0$:
+	    Определим индукцией по $n$. 
+	    
+	    \textbf{База:} для $n = 0$ и $n = 1$ тривиально.
+	    
+	    \textbf{Переход:} $k \rightarrow k+1$:
+	    $A_{|q^{k+1}|}(x, y) \equiv \exists z ((A_{|q^{k}|}(x, z))\wedge A_{|q|}(z, y)) \wedge \neg (A_{|q^{k-2}|}(x, y))$
+	    
+	    \item $A_{|q|}(x, y)$ $\succeq$ $|x| = |y|$:
+	    
+	    $|x| = |y| \equiv \exists z(A_{|q|}(z, y) \wed A_{|q|}(z, x)) \wed \forall t (A_{|q|}(y, t) \equiv A_{|q|}(x, t)) \wed (x \neq y)$
+	    
+	    \item $|x| = |y|$ $\succeq$ $x = 0$: 
+	    
+	    $x = 0 \equiv \neg \exists y (|x| = |y| \wed x \neq y)$
+	    
+	    \item $A_{q}(x, y)$ $\succeq$ $x=0$:
+	    
+	    $x = 0 \equiv A_{q}(x, x)$
+	    
+	\end{enumerate}
+	
+	
+	\subsubsection{Опишем автоморфизмы $f \colon \mathbb{Q} \longrightarrow \mathbb{Q}$, различающие отношения описаные выше:}
+	\begin{enumerate}
+	    %\item $x+y = a+b$ $\nsucceq$ $x + y = z$: $f(x) = x+1$. - Неактуально, т.к. есть пункт 4
+	    
+	    \item $x =q\cdot y$ $\nsucceq$ $x + y = a + b$: Домножение всех чисел из набора $\{1, q, q^{-1}, q^2, \dots \}$ на $q$.
+	    
+	    \item $|x| =|q\cdot y|$ $\nsucceq$ $x + y = a + b$: Домножение всех чисел из набора $\{1, q, q^{-1}, q^2, \dots \}$ на $q$.
+	    
+	    \item $x+y = a+b$ $\nsucceq$ $x = 0$: $f(x) = x+1$.
+	    
+	    \item $x =q_1\cdot y$ $\nsucceq$ $x =q_2\cdot y$, где $q_2 \neq q_1^{a}, a \in \textbf{Z}$: Домножение всех чисел из набора $\{1, q_1, q_1^{-1}, q_1^2, \dots \}$ на $q_1$.
+	    
+	    \item $|x| =|q_1\cdot y|$ $\nsucceq$ $|x| =|q_2\cdot y|$, где $q_2 \neq q_1^{a}, a \in \textbf{Z}$: Домножение всех чисел из набора $\{1, q_1, q_1^{-1}, q_1^2, \dots \}$ на $q_1$.
+	    
+	\end{enumerate}
+	
+	    
+	
+	
+	
+	
+\end{document}
+
+  
+	   %Рассмотрим автоморфизм $f \colon \mathbb{Q} \longrightarrow \mathbb{Q}$, сохраняющий $x + y = z$. Тогда для любых $x, y \in \mathbb{Q}$ верно $f(x) + f(y) = f(x+y)$. Рассмотрим некоторые $x, y, z$:
+	   %\begin{enumerate}
+	   
+	       %\item $\mathbf{x = y = z = 0}$:
+	       
+	       %$f(0) = 2\cdot f(0)$
+	       
+	       %$f(0) = 0$
+	       
+	       %\item $\mathbf{x = - y,z = 0}$:
+	       
+	       %$f(x) + f(-x) = f(0)$
+	       
+	       %$f(x) = -f(x)$
+	       
+	       %\item \textbf{Докажем по индукции, что} $\mathbf{f(k\cdot x) = k\cdot f(x),}$ $\mathbf{k \in \mathbb{N}}$\textbf{:}
+	       
+	       %\textbf{База индукции:} $\mathbf{z = 2\cdot y},$ $\mathbf{x = y}$:
+	       
+	       %$f(2\cdot y) + f(0) = f(y) + f(y)$
+	       
+	       %$f(2\cdot y) = 2\cdot f(y)$
+	       
+	       %\textbf{Переход} $\mathbf{k \rightarrow k+1}$ \textbf{:}
+	       %$f((k+1)\cdot y) = f(k\cdot y) + f(y) = (k)\cdot f(y) + f(y) = (k+1)\cdot f(y)$
+	       
+	       %\item \textbf{Докажем, что} $\mathbf{f(\frac{1}{k}) = \frac{1}{k}\cdot f(1),}$ $\mathbf{k \in %\mathbb{N}}$\textbf{:}
+	       
+	       %$f(\frac{1}{k}) + f(\frac{k-1}{k}) = f(1)$
+	       
+	       %$f(\frac{1}{k}) + (k-1)\cdot f(\frac{1}{k}) = f(1)$
+	       
+	       %$f(\frac{1}{k}) = \frac{1}{k}\cdot f(1)$
+	       
+	       %\item \textbf{Докажем, что} $\mathbf{f(\pm \frac{m}{k}) = \pm \frac{m}{k}\cdot f(1),}$ $\mathbf{m,k \in \mathbb{N}}$\textbf{:}
+	       
+	       %$f(\pm \frac{m}{k}) = \pm m\cdot f(\frac{1}{k}) = \pm m \cdot (\frac{1}{k}\cdot f(1)) = \pm \frac{m}{k}\cdot f(1)$
+	       
+	   %\end{enumerate}
+    	   %\textbf{Тогда для любого} $\mathbf{x \in \mathbb{Q}}$ \textbf{верно} $\mathbf{f(x) = x\cdot f(1)}$

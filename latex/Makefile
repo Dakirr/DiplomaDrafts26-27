@@ -17,7 +17,7 @@ pdf: image
 
 watch: image
 	docker run --rm --volume "$(CURDIR):/work" $(IMAGE) \
-		latexmk -pdf -pvc -interaction=nonstopmode -halt-on-error main.tex
+		sh scripts/watch.sh
 
 clean: image
 	docker run --rm --volume "$(CURDIR):/work" $(IMAGE) latexmk -C main.tex
