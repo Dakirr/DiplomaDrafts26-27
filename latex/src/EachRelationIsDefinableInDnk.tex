@@ -1,5 +1,8 @@
 
 \subsection{Критерий достижимости точки через $D_{n,k}$}
+\TODO{перейти к источнику \cite{knuth-leaper-graphs} и ссылаться на приведённый там
+результат вместо его повторного доказательства.}
+
 $D_{n,k}(a, b)$ верно тогда и только тогда, когда $a = b + (\pm n,\pm k)$ или $a = b + (\pm k,\pm n)$, где знаки выбираются независимо.
 
 Будем называть точку $b$ \textit{достижимой} из $a$ за $N$ шагов $D_{n,k}$, если существуют такие $b_1, b_2, \dots, b_N$, что:
@@ -14,9 +17,13 @@ $$D_{n,k}(a, b_1) \wedge (\bigwedge \limits_{i = 1}^{N - 1} D_{n,k}(b_i, b_{i + 
     \begin{enumerate}
         \item $d \mid x$;
         \item $d \mid y$;
-        \item $p \not{\mid}\ 2 \wedge q \not{\mid}\ 2 \Longrightarrow \frac{x}{d} \equiv \frac{y}{d}\ \pmod{2}$.
+        \item $(2 \nmid p \wedge 2 \nmid q) \Longrightarrow \frac{x}{d} \equiv \frac{y}{d}\ \pmod{2}$.
     \end{enumerate}
 \end{theorem}
+
+Критерий связности графа обобщённого шахматного коня является известным
+результатом \cite{rhodes-wilson}; ниже приведено его доказательство в используемых
+обозначениях вместе с описанием отдельных классов достижимости.
 
 \textbf{Доказательство.}
 
@@ -90,7 +97,7 @@ $$|a|(\text{sign}(a) \cdot 2n,0) + |b|(\text{sign}(b) \cdot 2k,0) = (2an+2bk,0) 
 
 Так как $p$ нечётно, а $q$ чётно, числа $(p-1)/2$ и $q/2$ целые. 
 
-Тогда разрешен сдвиг $$(n,k) - \frac{p-1}{2}(2d,0) - /frac{q}{2}(0,2d) = (dp,dq) - (d(p-1),0) - (0,dq) = (d,0)$$
+Тогда разрешен сдвиг $$(n,k) - \frac{p-1}{2}(2d,0) - \frac{q}{2}(0,2d) = (dp,dq) - (d(p-1),0) - (0,dq) = (d,0)$$
 
 Следовательно, $(d,0)$ разрешен. Аналогично, $(0,d)$ разрешен. Тогда разрешены все сдвиги вида $(d \cdot i,d\cdot j)$. 
 \ms
@@ -121,6 +128,16 @@ $$(n,k) + \frac{u-p}{2}(2d,0) + \frac{v-q}{2}(0,2d) = (dp,dq) + (d(u-p),0) + (0,
 \bigskip
 
 \begin{corollary}[\textbf{Классы достижимости}]
-Точки $(x_1,y_1)$ и $(x_2,y_2)$ находятся в одном классе достижимости тогда и только тогда, когда:
-$$\exists i\ |\ x_1\equiv x_2+i\cdot d\pmod{2d} \ \land \ y_1\equiv y_2+i\cdot d \pmod{2d}.$$
+Точки $(x_1,y_1)$ и $(x_2,y_2)$ находятся в одном классе достижимости тогда и только тогда, когда выполнено одно из следующих условий:
+\begin{enumerate}
+    \item Если одно из чисел $p$, $q$ чётно, то
+    $$x_1\equiv x_2\pmod d \ \land\ y_1\equiv y_2\pmod d.$$
+    \item Если $p$ и $q$ нечётны, то
+    $$\exists i\in\mathbb Z:\quad x_1\equiv x_2+i\cdot d\pmod{2d}
+    \ \land\ y_1\equiv y_2+i\cdot d\pmod{2d}.$$
+\end{enumerate}
 \end{corollary}
+\bs
+
+Обозначим класс достижимости относительно $D_{n,k}$, содержащий точку $(x,y)$, как $RC_{n,k}(x,y)$.
+\bs

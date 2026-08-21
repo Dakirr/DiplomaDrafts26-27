@@ -703,3 +703,73 @@ $$
 нужно доказать или опровергнуть.
 
 % Generated automatically from all .tex files under src/.
+
+\section{Отброшенное утверждение об изоморфизме}
+
+\textbf{Комментарий.}
+Утверждение ниже неверно для принятого определения $D_{n,k}$, в котором знаки
+выбираются независимо. При положительных $n\ne k$ каждая вершина имеет восемь
+соседей
+
+$$
+(\pm n,\pm k),\qquad(\pm k,\pm n),
+$$
+
+тогда как вершина обычной квадратной решётки имеет четыре соседа. Поэтому эти
+графы не могут быть изоморфны. Приведённое доказательство также учитывает лишь
+сдвиги $(n,k)$ и $(k,n)$ и пропускает разрешённые сдвиги с независимо
+выбранными знаками. Текст сохранён как черновая заметка.
+
+\begin{theorem}
+    $\forall |n| \neq |k|$ структура $\langle RC_{n,k}(x,y), D_{n,k}\rangle$ изоморфна $\langle \mathbb{Z}^2, x = y \pm (0, 1) \vee x = y \pm (1, 0)\rangle$.
+\end{theorem}
+
+\textbf{Доказательство.}
+Не умаляя общности будем рассматривать $\langle RC_{n,k}(0,0), D_{n,k}\rangle$, поскольку она может быть получена из исходной структуры параллельным переносом на $(-x,-y)$.
+Также приведем $RC_{n,k}(0,0)$ к виду $RC_{p,q}(0,0)$, разделив координаты всех точек на $(d,d)$.
+
+Построим отображение $\varphi: RC_{n,k}(0,0) \longrightarrow \mathbb{Z}^2$ такое, что:
+
+\begin{enumerate}
+    \item $\varphi((0,0)) = (0,0)$
+    \item $\varphi((x + n, x + k)) = \varphi((x,y)) + (1, 0)$
+    \item $\varphi((x + k, x + n)) = \varphi((x,y)) + (0, 1)$
+\end{enumerate}
+
+Докажем, что $\varphi$ является изоморфизмом.
+
+\textbf{Функциональность.}
+
+Пусть для точки $(x,y)$ существует два ее образа $(x_1,y_1)$ и $(x_2,y_2)$. Тогда:
+$$(x_1, y_1) = \varphi((0,0)) + (x_1, 0) + (0, y_1) = \varphi((x + n \cdot x_1 + k \cdot y_1, y + n \cdot y_1 + k \cdot x_1))$$
+$$(x_2, y_2) = \varphi((0,0)) + (x_2, 0) + (0, y_2) = \varphi((x + n \cdot x_2 + k \cdot y_2, y + n \cdot y_2 + k \cdot x_2))$$
+
+Тогда:
+
+$$n \cdot x_1 + k \cdot y_1 = n \cdot x_2 + k \cdot y_2 \wedge n \cdot y_1 + k \cdot x_1 = n \cdot y_2 + k \cdot x_2$$
+$$n \cdot (x_1 - x2) + k \cdot (y_1 - y2) = n \cdot (y_1 - y2) + k \cdot (x_1 - x_2) = 0$$
+$$(n - k) \cdot ((x_1 - x2) - (y_1 - y2)) = 0 \wedge n \cdot (y_1 - y2) + k \cdot (x_1 - x_2) = 0$$
+$$(x_1 - x2) - (y_1 - y_2) = 0 \wedge n \cdot (y_1 - y2) + k \cdot (x_1 - x_2) = 0$$
+$$(x_1 - x2) - (y_1 - y_2) = 0 \wedge n \cdot (y_1 - y2) + k \cdot (x_1 - x_2) = 0$$
+$$(x_1 - x2) - (y_1 - y_2) = 0 \wedge (n + k) \cdot (x_1 - x_2) = 0$$
+$$(x_1 - x2) = (y_1 - y_2) = 0$$
+$$(x_1, y_1) = (x_2, y_2)$$ \hfill $\square$
+
+\textbf{Тотальность.}
+
+Докажем, что $\forall (x, y) \in RC_{n,k}(0,0)\ \exists a, b \in \mathbb{Z}^2\ |\ a \cdot n + b \cdot k = x \wedge a \cdot k + b \cdot n = y$
+
+Действительно:
+
+$$a(n-k) + b(k-n) = (x-y) \Rightarrow a - b = \frac{x-y}{n-k}$$
+$$a(k+n) + b(n+k) = (x+y) \Rightarrow a + b = \frac{x+y}{k+n}$$
+
+$$a = \left(\frac{x+y}{k+n} + \frac{x-y}{n-k}\right)/2 \wedge b = \left(\frac{x+y}{k+n} - \frac{x-y}{n-k}\right)/2$$
+
+\textbf{Сюръективность и инъективность.}
+
+Докажем, что $\forall (a, b) \in \mathbb{Z}^2\ \exists x, y \in RC_{n,k}(0,0)\ |\ a \cdot n + b \cdot k = x \wedge a \cdot k + b \cdot n = y$
+
+Аналогично предыдущему:
+
+$$x = \left(\frac{a+b}{k+n} + \frac{a-b}{n-k}\right)/2 \wedge y = \left(\frac{a+b}{k+n} - \frac{a-b}{n-k}\right)/2$$
