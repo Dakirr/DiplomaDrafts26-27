@@ -1,9 +1,9 @@
-# Automorphisms of the all-reaching knight graph and the square grid
+# Автоморфизмы всюду достижимого графа коня и квадратной решётки
 
-## 1. Aim and assumptions
+## 1. Цель и предположения
 
-Let $n$ and $k$ be distinct positive integers. Define the generalized
-knight relation on $\mathbb Z^2$ by
+Пусть $n$ и $k$ --- различные положительные целые числа. Определим обобщённое
+отношение коня на $\mathbb Z^2$ следующим образом:
 
 $$
 D_{n,k}(x,y)
@@ -11,7 +11,7 @@ D_{n,k}(x,y)
 y-x\in S_{n,k},
 $$
 
-where
+где
 
 $$
 S_{n,k}
@@ -19,9 +19,9 @@ S_{n,k}
 \{(\pm n,\pm k),(\pm k,\pm n)\}.
 $$
 
-The two signs in each vector are chosen independently.
+Два знака в каждом векторе выбираются независимо.
 
-Define the ordinary square-grid relation by
+Определим обычное отношение квадратной решётки следующим образом:
 
 $$
 E(x,y)
@@ -29,14 +29,14 @@ E(x,y)
 y-x\in T,
 $$
 
-where
+где
 
 $$
 T=\{(1,0),(-1,0),(0,1),(0,-1)\}.
 $$
 
-Assume that $D_{n,k}$ reaches every point of $\mathbb Z^2$. By the
-reachability criterion, this is equivalent to
+Предположим, что $D_{n,k}$ достигает каждой точки $\mathbb Z^2$. По критерию
+достижимости это эквивалентно условию
 
 $$
 \gcd(n,k)=1
@@ -44,7 +44,7 @@ $$
 n+k\equiv 1\pmod 2.
 $$
 
-The goal is to prove the following equality of concrete permutation groups:
+Цель состоит в доказательстве следующего равенства конкретных групп перестановок:
 
 $$
 \operatorname{Aut}(\mathbb Z^2,D_{n,k})
@@ -54,12 +54,12 @@ $$
 \{x\mapsto Ax+t:t\in\mathbb Z^2,\ A\in D_4\}.
 $$
 
-Here $D_4$ is the group of the eight signed coordinate permutations. The
-word “equality” is important: the two automorphism groups contain exactly the
-same permutations of the same set $\mathbb Z^2$; they are not merely
-abstractly isomorphic.
+Здесь $D_4$ --- группа восьми знаковых перестановок координат. Слово
+«равенство» существенно: две группы автоморфизмов содержат в точности одни и
+те же перестановки одного и того же множества $\mathbb Z^2$; они не просто
+абстрактно изоморфны.
 
-After this, pass to a common upward completion and prove
+После этого перейдём к общему полному вверх расширению и докажем
 
 $$
 \operatorname{Aut}((\mathbb Z^2)^*,D_{n,k}^*)
@@ -67,47 +67,49 @@ $$
 \operatorname{Aut}((\mathbb Z^2)^*,E^*).
 $$
 
-The upward-complete version of the Svenonius criterion will then imply that
-$D_{n,k}$ and $E$ are first-order interdefinable without parameters.
+Тогда версия критерия Свенониуса для полных вверх структур будет означать, что
+$D_{n,k}$ и $E$ взаимно определимы в логике первого порядка без параметров.
 
-This does **not** say that the two graphs are isomorphic. The square grid has
-degree $4$, whereas the graph of $D_{n,k}$ has degree $8$ under the
-assumptions above. Isomorphism preserves degrees.
+Это **не** означает, что два графа изоморфны. Степень вершины квадратной
+решётки равна $4$, тогда как степень вершины графа $D_{n,k}$ при сделанных
+выше предположениях равна $8$. Изоморфизм сохраняет степени вершин.
 
-## 2. Regard the relations as Cayley graphs
+## 2. Рассмотрение отношений как графов Кэли
 
-The graph of $D_{n,k}$ is
+Граф отношения $D_{n,k}$ имеет вид
 
 $$
 \operatorname{Cay}(\mathbb Z^2,S_{n,k}).
 $$
 
-The all-reaching assumption says precisely that $S_{n,k}$ generates the
-additive group $\mathbb Z^2$, so this Cayley graph is connected.
+Предположение о всюду достижимости означает в точности, что $S_{n,k}$
+порождает аддитивную группу $\mathbb Z^2$, поэтому этот граф Кэли связен.
 
-Similarly, the square grid is
+Аналогично, квадратная решётка имеет вид
 
 $$
 \operatorname{Cay}(\mathbb Z^2,T),
 $$
 
-and $T$ generates $\mathbb Z^2$.
+и $T$ порождает $\mathbb Z^2$.
 
-Both graphs are therefore connected finite-valency Cayley graphs of the
-torsion-free abelian group $\mathbb Z^2$. In particular, $\mathbb Z^2$ is
-torsion-free nilpotent, so the affine-automorphism theorem for such Cayley
-graphs applies.
+Таким образом, оба графа являются связными локально конечными графами Кэли
+абелевой группы без кручения $\mathbb Z^2$. В частности, $\mathbb Z^2$ ---
+нильпотентная группа без кручения, поэтому к этим графам Кэли применима теорема
+об аффинном виде автоморфизмов.
 
-## 3. Every automorphism of $D_{n,k}$ is affine
+## 3. Каждый автоморфизм $D_{n,k}$ аффинен
 
-Apply [Theorem 1.4 of Morris, Morris, and Verret](https://nyjm.albany.edu/j/2016/22-21v.pdf) to
-$\operatorname{Cay}(\mathbb Z^2,S_{n,k})$. Every automorphism has the form
+Применим [теорему 1.4 Морриса, Моррис и Верре](https://nyjm.albany.edu/j/2016/22-21v.pdf) к
+$\operatorname{Cay}(\mathbb Z^2,S_{n,k})$. Доказательство используемого здесь
+случая для свободной абелевой группы $\mathbb Z^2$ восходит к
+[работе Рябченко](https://www.mathnet.ru/rus/smj1796). Каждый автоморфизм имеет вид
 
 $$
 f(x)=Ax+t,
 $$
 
-where
+где
 
 $$
 t\in\mathbb Z^2,\qquad
@@ -115,12 +117,12 @@ A\in\operatorname{GL}(2,\mathbb Z),\qquad
 A(S_{n,k})=S_{n,k}.
 $$
 
-Thus $A$ is not a vector. It is a fixed $2\times2$ integer matrix, or
-equivalently the linear part of $f$. The symbol $t$ denotes the fixed
-translation vector. Both $A$ and $t$ are fixed once the automorphism $f$
-is fixed.
+Таким образом, $A$ --- не вектор. Это фиксированная целочисленная матрица
+размера $2\times2$, или, что эквивалентно, линейная часть $f$. Символ $t$
+обозначает фиксированный вектор сдвига. Как только зафиксирован автоморфизм
+$f$, фиксированы и $A$, и $t$.
 
-It remains to calculate the linear stabilizer
+Остаётся вычислить линейный стабилизатор
 
 $$
 G_{n,k}
@@ -128,11 +130,11 @@ G_{n,k}
 \{A\in\operatorname{GL}(2,\mathbb Z):A(S_{n,k})=S_{n,k}\}.
 $$
 
-## 4. The linear stabilizer of the knight moves is $D_4$
+## 4. Линейный стабилизатор ходов коня равен $D_4$
 
-### 4.1. The evident eight transformations
+### 4.1. Восемь очевидных преобразований
 
-Every signed coordinate permutation preserves $S_{n,k}$. They are
+Каждая знаковая перестановка координат сохраняет $S_{n,k}$. Это преобразования
 
 $$
 \begin{aligned}
@@ -147,17 +149,17 @@ $$
 \end{aligned}
 $$
 
-These transformations form the square-symmetry group $D_4$. Hence
+Эти преобразования образуют группу симметрий квадрата $D_4$. Следовательно,
 
 $$
 D_4\leq G_{n,k}.
 $$
 
-### 4.2. Exclude all additional transformations
+### 4.2. Исключение всех дополнительных преобразований
 
-After interchanging $n$ and $k$ if necessary, suppose that $n>k>0$. In
-cyclic order, the vectors of $S_{n,k}$ are the vertices of the convex
-octagon
+При необходимости поменяв $n$ и $k$ местами, предположим, что $n>k>0$.
+В циклическом порядке векторы из $S_{n,k}$ являются вершинами выпуклого
+восьмиугольника
 
 $$
 \begin{aligned}
@@ -168,17 +170,18 @@ v_6&=( k,-n),& v_7&=( n,-k).
 \end{aligned}
 $$
 
-Any invertible linear map preserving $S_{n,k}$ also preserves its convex
-hull. It therefore induces a combinatorial symmetry of this octagon.
+Любое обратимое линейное отображение, сохраняющее $S_{n,k}$, сохраняет также
+его выпуклую оболочку. Поэтому оно индуцирует комбинаторную симметрию этого
+восьмиугольника.
 
-The known $D_4$ acts faithfully on the octagon and gives an eight-element
-subgroup of its sixteen-element combinatorial symmetry group. It contains the
-rotations through an even number of vertex positions and four reflections;
-it therefore has index two. The one-position rotation is not in this
-subgroup.
+Уже найденная группа $D_4$ действует на восьмиугольнике точно и задаёт
+подгруппу из восьми элементов в его шестнадцатиэлементной группе комбинаторных
+симметрий. Она содержит повороты на чётное число позиций вершин и четыре
+отражения; следовательно, её индекс равен двум. Поворот на одну позицию не
+принадлежит этой подгруппе.
 
-Consequently, if a linear symmetry outside $D_4$ existed, composing it with
-an element of $D_4$ would produce the one-position shift
+Следовательно, если бы существовала линейная симметрия вне $D_4$, то её
+композиция с некоторым элементом $D_4$ давала бы сдвиг на одну позицию
 
 $$
 v_0\mapsto v_1,\qquad
@@ -186,31 +189,32 @@ v_1\mapsto v_2,\qquad
 v_2\mapsto v_3.
 $$
 
-The first two images determine a unique linear map, because $v_0$ and
-$v_1$ are linearly independent. Requiring the same map to send $v_2$ to
-$v_3$ gives
+Первые два образа однозначно определяют линейное отображение, поскольку $v_0$
+и $v_1$ линейно независимы. Требование, чтобы то же отображение переводило
+$v_2$ в $v_3$, даёт
 
 $$
 n^2-2nk-k^2=0.
 $$
 
-Since $k>0$, this implies
+Поскольку $k>0$, отсюда следует
 
 $$
 \frac nk=1+\sqrt2,
 $$
 
-which is impossible because $n/k$ is rational. Therefore no such additional
-linear symmetry exists, and
+что невозможно, поскольку $n/k$ рационально. Поэтому такой дополнительной
+линейной симметрии не существует и
 
 $$
 G_{n,k}=D_4.
 $$
 
-## 5. Automorphisms of the knight graph
+## 5. Автоморфизмы графа коня
 
-Combining the affine theorem with the calculation of the linear stabilizer,
-every automorphism of the all-reaching knight graph is uniquely of the form
+Объединяя теорему об аффинном виде с вычислением линейного стабилизатора,
+получаем, что каждый автоморфизм всюду достижимого графа коня единственным
+образом представляется в виде
 
 $$
 f(x)=Ax+t,
@@ -220,15 +224,15 @@ t\in\mathbb Z^2,
 A\in D_4.
 $$
 
-Conversely, every such map is an automorphism, because
+Обратно, каждое такое отображение является автоморфизмом, поскольку
 
 $$
 f(y)-f(x)=A(y-x)
 $$
 
-and $A$ permutes the vectors in $S_{n,k}$.
+и $A$ переставляет векторы из $S_{n,k}$.
 
-Therefore
+Следовательно,
 
 $$
 \operatorname{Aut}(\mathbb Z^2,D_{n,k})
@@ -236,26 +240,27 @@ $$
 \mathbb Z^2\rtimes D_4.
 $$
 
-The composition rule is
+Правило композиции имеет вид
 
 $$
 (t,A)(u,B)=(t+Au,AB).
 $$
 
-The translations form the normal subgroup $\mathbb Z^2$, and the stabilizer
-of the origin is exactly $D_4$.
+Сдвиги образуют нормальную подгруппу $\mathbb Z^2$, а стабилизатор начала
+координат в точности равен $D_4$.
 
-## 6. Automorphisms of the square grid
+## 6. Автоморфизмы квадратной решётки
 
-Apply the same affine theorem to
-$\operatorname{Cay}(\mathbb Z^2,T)$. Every grid automorphism has the form
+Применим ту же теорему об аффинном виде к
+$\operatorname{Cay}(\mathbb Z^2,T)$. Каждый автоморфизм решётки имеет вид
 
 $$
 f(x)=Ax+t,
 $$
 
-where $t\in\mathbb Z^2$ and $A(T)=T$. A linear map permutes the four
-vectors of $T$ exactly when $A$ is a signed coordinate permutation. Hence
+где $t\in\mathbb Z^2$ и $A(T)=T$. Линейное отображение переставляет четыре
+вектора из $T$ тогда и только тогда, когда $A$ является знаковой перестановкой
+координат. Следовательно,
 
 $$
 \operatorname{Aut}(\mathbb Z^2,E)
@@ -265,24 +270,24 @@ $$
 \mathbb Z^2\rtimes D_4.
 $$
 
-More explicitly, if $E(x,y)$, then
+Более явно, если $E(x,y)$, то
 
 $$
 y-x\in\{\pm(1,0),\pm(0,1)\}.
 $$
 
-For $f(x)=Ax+t$, the translation cancels in the difference:
+Для $f(x)=Ax+t$ сдвиг сокращается в разности:
 
 $$
 f(y)-f(x)=A(y-x).
 $$
 
-Since $A\in D_4$, it permutes the four grid steps, and so
-$E(f(x),f(y))$ holds. This is why every affine map obtained above preserves
-$E$. An arbitrary matrix in $\operatorname{GL}(2,\mathbb Z)$ would not
-necessarily preserve $E$; the restriction $A\in D_4$ is essential.
+Поскольку $A\in D_4$, оно переставляет четыре шага решётки, поэтому выполняется
+$E(f(x),f(y))$. Именно поэтому каждое полученное выше аффинное отображение
+сохраняет $E$. Произвольная матрица из $\operatorname{GL}(2,\mathbb Z)$ не
+обязательно сохраняла бы $E$; ограничение $A\in D_4$ существенно.
 
-We have now proved equality as permutation groups on $\mathbb Z^2$:
+Итак, мы доказали равенство групп перестановок множества $\mathbb Z^2$:
 
 $$
 \operatorname{Aut}(\mathbb Z^2,D_{n,k})
@@ -290,16 +295,16 @@ $$
 \operatorname{Aut}(\mathbb Z^2,E).
 $$
 
-## 7. Construct a common upward completion
+## 7. Построение общего полного вверх расширения
 
-Let
+Пусть
 
 $$
 U=\mathbb Z^2\times\mathbb N.
 $$
 
-Think of $\mathbb Z^2\times\{i\}$ as the $i$-th galaxy. Define both
-relations componentwise:
+Будем рассматривать $\mathbb Z^2\times\{i\}$ как $i$-ю галактику. Определим
+оба отношения покомпонентно:
 
 $$
 D_{n,k}^*((x,i),(y,j))
@@ -315,42 +320,43 @@ E^*((x,i),(y,j))
 i=j\ \land\ E(x,y).
 $$
 
-Thus each structure is a countable disjoint union of copies of its original
-connected graph.
+Таким образом, каждая структура является счётным дизъюнктным объединением
+копий своего исходного связного графа.
 
-Connected locally finite vertex-transitive graphs fall under the
-strongly-discretely-homogeneous case treated by Semenov and Soprunov. Their
-upward completion is a countable disjoint union of isomorphic galaxies.
-Consequently the structures just defined may be used as upward completions of
-the all-reaching knight graph and of the square grid. The first galaxy embeds
-as an elementary substructure.
+Связные локально конечные вершинно-транзитивные графы относятся к рассмотренному
+Семёновым и Сопруновым сильно дискретно однородному случаю. Их полное вверх
+расширение является счётным дизъюнктным объединением изоморфных галактик.
+Следовательно, только что определённые структуры можно использовать как полные
+вверх расширения всюду достижимого графа коня и квадратной решётки. Первая
+галактика вкладывается как элементарная подструктура.
 
-For complete rigor in the final text, cite the result of Semenov and Soprunov
-which identifies this disjoint union as the upward completion and gives the
-automorphism/definability criterion for upward-complete structures.
+Для полной строгости в итоговом тексте следует сослаться на результат Семёнова
+и Сопрунова, который отождествляет это дизъюнктное объединение с полным вверх
+расширением и даёт критерий автоморфизмов/определимости для полных вверх
+структур.
 
-## 8. Calculate the automorphisms of the completions
+## 8. Вычисление автоморфизмов расширений
 
-An automorphism of either completion may:
+Автоморфизм каждого из расширений может:
 
-1. permute the galaxies by an arbitrary
+1. переставлять галактики произвольной перестановкой
    $\sigma\in\operatorname{Sym}(\mathbb N)$;
-2. apply an arbitrary base automorphism $h_i$ inside each source galaxy
-   $i$.
+2. применять произвольный автоморфизм исходного графа $h_i$ внутри каждой
+   исходной галактики $i$.
 
-It therefore has the form
+Поэтому он имеет вид
 
 $$
 F(x,i)=(h_i(x),\sigma(i)).
 $$
 
-Let
+Пусть
 
 $$
 H=\{x\mapsto Ax+t:t\in\mathbb Z^2,\ A\in D_4\}.
 $$
 
-Sections 5 and 6 proved, as a concrete equality, that
+В разделах 5 и 6 было доказано следующее конкретное равенство:
 
 $$
 \operatorname{Aut}(\mathbb Z^2,D_{n,k})
@@ -358,7 +364,8 @@ $$
 =\operatorname{Aut}(\mathbb Z^2,E).
 $$
 
-It follows that the two sets of allowed maps $F$ are exactly the same:
+Отсюда следует, что два множества допустимых отображений $F$ в точности
+совпадают:
 
 $$
 \operatorname{Aut}(U,D_{n,k}^*)
@@ -368,7 +375,7 @@ H\mathbin{\wr}\operatorname{Sym}(\mathbb N)
 \operatorname{Aut}(U,E^*).
 $$
 
-Equivalently,
+Эквивалентно,
 
 $$
 \operatorname{Aut}(U,D_{n,k}^*)
@@ -378,20 +385,20 @@ H^{\mathbb N}\rtimes\operatorname{Sym}(\mathbb N)
 \operatorname{Aut}(U,E^*).
 $$
 
-Again, this is equality of concrete permutation groups on the common universe
-$U$, not only an abstract group isomorphism.
+Снова это равенство конкретных групп перестановок общей области $U$, а не
+только абстрактный изоморфизм групп.
 
-## 9. Apply the upward-complete Svenonius criterion
+## 9. Применение критерия Свенониуса для полных вверх структур
 
-Use the automorphism/definability theorem for upward-complete structures:
+Используем теорему об автоморфизмах/определимости для полных вверх структур:
 
-> A relation $R$ is first-order definable without parameters from a
-> structure $M$ if and only if $R^*$ is preserved by every
-> automorphism of an upward completion $M^*$.
+> Отношение $R$ определимо без параметров в логике первого порядка в структуре
+> $M$ тогда и только тогда, когда $R^*$ сохраняется каждым автоморфизмом
+> полного вверх расширения $M^*$.
 
-Apply it in both directions.
+Применим её в обоих направлениях.
 
-First,
+Во-первых,
 
 $$
 \operatorname{Aut}(U,D_{n,k}^*)
@@ -399,11 +406,11 @@ $$
 \operatorname{Aut}(U,E^*),
 $$
 
-so every automorphism of the upward completion of $D_{n,k}$ preserves
-$E^*$. Therefore $E$ is first-order definable from $D_{n,k}$
-without parameters.
+поэтому каждый автоморфизм полного вверх расширения $D_{n,k}$ сохраняет
+$E^*$. Следовательно, $E$ определимо через $D_{n,k}$ без параметров в логике
+первого порядка.
 
-Second,
+Во-вторых,
 
 $$
 \operatorname{Aut}(U,E^*)
@@ -411,11 +418,11 @@ $$
 \operatorname{Aut}(U,D_{n,k}^*),
 $$
 
-so every automorphism of the upward completion of $E$ preserves
-$D_{n,k}^*$. Therefore $D_{n,k}$ is first-order definable from
-$E$ without parameters.
+поэтому каждый автоморфизм полного вверх расширения $E$ сохраняет
+$D_{n,k}^*$. Следовательно, $D_{n,k}$ определимо через $E$ без параметров в
+логике первого порядка.
 
-Hence
+Следовательно,
 
 $$
 (\mathbb Z^2,D_{n,k})
@@ -423,70 +430,78 @@ $$
 (\mathbb Z^2,E)
 $$
 
-are first-order interdefinable.
+взаимно определимы в логике первого порядка.
 
-They still are not isomorphic as graphs: interdefinability means that each
-edge relation can be described by a first-order formula using the other edge
-relation on the same universe. It does not mean that the two edge relations
-are carried to one another by a bijection.
+При этом они по-прежнему не изоморфны как графы: взаимная определимость
+означает, что каждое отношение смежности можно описать формулой первого порядка
+через другое отношение смежности на той же области. Она не означает, что два
+отношения смежности переводятся друг в друга некоторой биекцией.
 
-## 10. Logical dependency of the proof
+## 10. Логическая структура доказательства
 
-1. $D_{n,k}$ is all-reaching.
-2. Therefore $\operatorname{Cay}(\mathbb Z^2,S_{n,k})$ is connected.
-3. The Morris--Morris--Verret theorem makes every automorphism affine.
-4. The linear stabilizer of $S_{n,k}$ is exactly $D_4$.
-5. Hence
+1. $D_{n,k}$ всюду достижимо.
+2. Поэтому $\operatorname{Cay}(\mathbb Z^2,S_{n,k})$ связен.
+3. По теореме Морриса--Моррис--Верре каждый автоморфизм аффинен; доказательство
+   используемого абелева случая восходит к работе Рябченко.
+4. Линейный стабилизатор $S_{n,k}$ в точности равен $D_4$.
+5. Следовательно,
    $\operatorname{Aut}(\mathbb Z^2,D_{n,k})
    =\mathbb Z^2\rtimes D_4$.
-6. Independently,
+6. Независимо от этого,
    $\operatorname{Aut}(\mathbb Z^2,E)
-   =\mathbb Z^2\rtimes D_4$, with exactly the same permutations.
-7. Their upward completions therefore have the same wreath-product
-   automorphism group.
-8. The upward-complete Svenonius criterion yields first-order
-   interdefinability.
+   =\mathbb Z^2\rtimes D_4$, причём конкретные перестановки в точности те же.
+7. Поэтому их полные вверх расширения имеют одну и ту же группу автоморфизмов,
+   являющуюся сплетением групп.
+8. Критерий Свенониуса для полных вверх структур даёт взаимную определимость в
+   логике первого порядка.
 
-## 11. Sources to cite
+## 11. Источники для цитирования
 
-For the affine form of automorphisms of connected Cayley graphs on
-torsion-free nilpotent groups:
+Для аффинного вида автоморфизмов связных графов Кэли свободных абелевых групп:
+
+> А. А. Рябченко,
+> «Изоморфизмы графов Кэли свободной абелевой группы»,
+> *Сибирский математический журнал* 48(5) (2007), 1142--1146.
+> Теорема 2 и её доказательство.
+> <https://www.mathnet.ru/rus/smj1796>
+
+Для обобщения на нильпотентные группы без кручения:
 
 > Dave Witte Morris, Joy Morris, and Gabriel Verret,
 > “Isomorphisms of Cayley graphs on nilpotent groups,”
 > *New York Journal of Mathematics* 22 (2016), 453--467.
-> Theorem 1.4; see also Proposition 2.1 for the torsion-free abelian case.
+> Теорема 1.4; для абелева случая без кручения см. также предложение 2.1.
 > <https://nyjm.albany.edu/j/2016/22-21v.pdf>
 
-For upward-complete structures, their galaxy decomposition, and the
-automorphism criterion for definability:
+Для полных вверх структур, их разложения на галактики и критерия определимости
+через автоморфизмы:
 
 > A. Semenov and S. Soprunov,
 > “Automorphisms and Definability (of Reducts) for Upward Complete
 > Structures,” *Mathematics* 10(20) (2022), Article 3748.
 > <https://doi.org/10.3390/math10203748>
 
-## 12. Variant for a non-all-reaching knight relation
+## 12. Вариант для отношения коня, не являющегося всюду достижимым
 
-If the all-reaching assumption is removed, first restrict to
+Если отказаться от предположения о всюду достижимости, сначала ограничимся на
 
 $$
 L=\operatorname{RC}_{n,k}(0,0).
 $$
 
-Set
+Положим
 
 $$
 d=\gcd(n,k),\qquad p=\frac nd,\qquad q=\frac kd.
 $$
 
-If $p$ and $q$ have opposite parity, then
+Если $p$ и $q$ имеют разную чётность, то
 
 $$
 L=d\mathbb Z^2.
 $$
 
-If $p$ and $q$ are both odd, then
+Если $p$ и $q$ оба нечётны, то
 
 $$
 L
@@ -494,8 +509,9 @@ L
 \{(da,db):a,b\in\mathbb Z,\ a\equiv b\pmod 2\}.
 $$
 
-In either case $L$ is a rank-two free abelian group, and the component is
-$\operatorname{Cay}(L,S_{n,k})$. The same affine argument gives
+В каждом случае $L$ является свободной абелевой группой ранга два, а компонента
+имеет вид $\operatorname{Cay}(L,S_{n,k})$. То же рассуждение об аффинном виде
+даёт
 
 $$
 \operatorname{Aut}(\operatorname{RC}_{n,k}(0,0),D_{n,k})
@@ -503,7 +519,7 @@ $$
 L\rtimes D_4
 $$
 
-for distinct positive $n$ and $k$. The main interdefinability argument
-above, however, uses the all-reaching case so that both relations live on the
-same standard universe $\mathbb Z^2$ and have the same concrete affine
-automorphisms.
+для различных положительных $n$ и $k$. Однако основное приведённое выше
+рассуждение о взаимной определимости использует случай всюду достижимости,
+чтобы оба отношения были заданы на одной и той же стандартной области
+$\mathbb Z^2$ и имели одни и те же конкретные аффинные автоморфизмы.

@@ -15,4 +15,4 @@ monitor_sources &
 monitor_pid=$!
 trap 'kill "$monitor_pid" 2>/dev/null || true' EXIT INT TERM
 
-latexmk -pdf -pvc -interaction=nonstopmode -halt-on-error main.tex
+latexmk -pdf -pvc -view=none -interaction=nonstopmode -halt-on-error main.tex

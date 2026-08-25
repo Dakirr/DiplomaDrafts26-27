@@ -1,6 +1,6 @@
-
+\newcommand{\Int}{\mathbb{Z}}
 \subsection{Критерий достижимости точки через $D_{n,k}$}
-\temporarytext{Перейти к источнику \cite{knuth-leaper-graphs} и ссылаться на приведённый там
+\temporarytext{Перейти к источнику \cite{Leaper_Graphs_Knuth} и ссылаться на приведённый там
 результат вместо его повторного доказательства.}
 
 $D_{n,k}(a, b)$ верно тогда и только тогда, когда $a = b + (\pm n,\pm k)$ или $a = b + (\pm k,\pm n)$, где знаки выбираются независимо.
@@ -22,7 +22,7 @@ $$D_{n,k}(a, b_1) \wedge (\bigwedge \limits_{i = 1}^{N - 1} D_{n,k}(b_i, b_{i + 
 \end{theorem}
 
 Критерий связности графа обобщённого шахматного коня является известным
-результатом \cite{rhodes-wilson}; ниже приведено его доказательство в используемых
+результатом \cite{Connectivity_Knight_Graphs_Rhodes_Wilson}; ниже приведено его доказательство в используемых
 обозначениях вместе с описанием отдельных классов достижимости.
 
 \textbf{Доказательство.}
@@ -140,4 +140,98 @@ $$(n,k) + \frac{u-p}{2}(2d,0) + \frac{v-q}{2}(0,2d) = (dp,dq) + (d(u-p),0) + (0,
 \bs
 
 Обозначим класс достижимости относительно $D_{n,k}$, содержащий точку $(x,y)$, как $RC_{n,k}(x,y)$.
+
+\subsubsection{Эквивалентность бинарных отношений $D_{n,k}$}
+
+Определим два подсемейства $D_{n,k}$:
+\begin{itemize}
+    \item $S_d \leftrightharpoons D_{d,0}$;
+    \item $D_d \leftrightharpoons D_{d,d}$.
+\end{itemize}
+
+
+\begin{lemma}
+    Пусть $p,q$ --- положительные целые числа и $\gcd(n,k) = 1$, $n \equiv k \pmod 2$. Тогда $D_{n,k} \approx S_1$.
+\end{lemma}
+\textbf{Доказательство.} 
+
+Докажем, что множество автоморфизмов $\langle\Int^2, D_{n,k}\rangle$ сохраняет $\langle\Int^2, S_1\rangle$.
+
+Определим $S_{n,k} = \{(\pm n,\pm k),(\pm k, \pm n)\}$. Тогда выполнено $D_{n,k}(x,y) \Iff x - y \in S_{n,k}$.
+
+Тогда структуру $\langle\Int^2, D_{n,k}\rangle$ можно рассматривать как граф Кэли $\Cay(\Int^2, S{n,k})$. Воспользуемся теоремой~1.4 из источника~\cite{Cayley_Graphs_Nilpotent_Groups_Morris_Morris_Verret}, приведённой ниже на языке 
+оригинала.\footnote{Доказательство используемого нами случая для $\Int^2$ опирается на работу A.A. Рябченко~\cite{Cayley_Graphs_Free_Abelian_Group_Ryabchenko}.}
+
+\begin{theorem}
+    \label{theorem:Cayley_Graphs_Isomorphisms}
+    Assume:
+    \begin{itemize}
+        \item $G_1$ and $G_2$ are torsion-free, nilpotent groups.
+        \item $S_i$ is a finite, symmetric generating set of $G_i$, for $i=1,2$.
+    \end{itemize}
+    Then every isomorphism from $\operatorname{Cay}(G_1;S_1)$ to 
+    $\operatorname{Cay}(G_2;S_2)$ is an affine bijection.
+\end{theorem}
+
+Пусть $G_1 = G_2 = \Int^2$, $S_1 = S_2 = S_{n,k}$. Тогда по теореме \ref{theorem:Cayley_Graphs_Isomorphisms} выполнено\footnote{Строго говоря, из теоремы следует утверждение только в одну сторону, в обратную сторону утверждение следует из определения автоморфизма.}:
+$$\varphi\in\operatorname{Aut}\bigl(\operatorname{Cay}(\Int^2;S_{n,k})\bigr)
+  \Iff
+  \exists t\in\mathbb Z^2\
+  \exists A\in\operatorname{GL}(2,\mathbb Z):
+  \left(A(S_{n,k})=S_{n,k} \land \varphi(x)=Ax+t\right).$$
+
+Из условия $A(S_{n,k})=S_{n,k}$ следует, что $A = 
+\begin{pmatrix}
+  \pm 1 & 0\\
+  0 & \pm 1
+\end{pmatrix} 
+\vee 
+A = \begin{pmatrix}
+  0 & \pm 1\\
+  \pm 1 & 0
+\end{pmatrix}.$
+
+Откуда любое преобразование вида $Ax + t$ сохраняет отношение $D_{1, 0}$ на $\Int^2$.
+
+Рассмотрим полное вверх расширение $\Int^2$. Согласно \cite{Upward_Complete_Structures_Semenov_Soprunov}, $(\Int^2)^*$ представляет собой счетное количество решеток $\Int^2$. 
+Автоморфизмы $(\Int^2)^*$ в таком случае будут иметь вид перестановок галактик между собой и применения к каждой из них автоморфизма, описанного выше. Такие автоморфизмы также сохраняют $D_{1, 0}$.
+
+Воспользуемся теоремой Свенониуса\footnote{Текст теоремы взят из источника \cite{Svenonius_Theorem_Model_Theory_Hodges} и приведен в оригинале.}:
+
+\begin{namedTheorem}[Теорема Свенониуса]
+    Let $M=\langle A,\Sigma\rangle$ be a countable structure, and $\Sigma \subset \Sigma'$. Then, for any relation $P \in \Sigma$, the following two conditions are equivalent:
+    \begin{enumerate}
+        \item $P$ is not definable in $\Sigma'$.
+        \item There exists an elementary extension $M' = \langle A', \Sigma' \rangle$ of the structure $M'$ and a permutation $\varphi$ of the domain of $A'$, preserving all relations in $\Sigma'$ and not preserving $P$.
+    \end{enumerate}
+\end{namedTheorem}
+
+Поскольку условие 2 неверно для $M = \langle \Int^2, D_{n,k} \rangle$ и $P = D_{1, 0}$:
+$$D_{n,k} \succ D_{1, 0}$$
+
+По определению:
+
+$$E = D_{1, 0} \succ D_{n,k}$$
+
+Тогда $D_{1, 0} \approx D_{n,k} \Then S_1 \approx D_{n,k}$. \hfill $\square$
+
+
 \bs
+\begin{theorem}
+    Пусть $n,k$ --- положительные целые числа, $d=\gcd(n,k)$, $p=\frac{n}{d}$ и $q=\frac{k}{d}$. Тогда:
+    
+    $$
+        D_{n,k} \approx
+        \begin{cases}
+            DS_d, & p\not\equiv q\pmod 2,\\
+            DD_d, & p\equiv q\pmod 2.
+        \end{cases}
+    $$
+\end{theorem}
+\textbf{Доказательство.} 
+Рассмотрим два случая:
+
+\textbf{Случай 1: $p\not\equiv q\pmod 2$.} 
+
+\bs
+\textbf{Случай 2: $p\equiv q\pmod 2$.}
