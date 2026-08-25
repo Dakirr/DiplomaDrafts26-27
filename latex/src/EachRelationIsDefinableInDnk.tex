@@ -51,7 +51,7 @@ $$\Rightarrow x_1 = \alpha \cdot d + x_2\ \wedge\ y_1 = \beta \cdot d + y_2$$
 Теперь предположим, что $p$ и $q$ оба нечётные. После деления координат
 каждого шага на $d$ получается один из векторов
 
-$$(\pm p,\pm q)\quad\text{или}\quad(\pm q,\pm p).$$
+$$(\pm p,\pm q)\ \text{или}\ (\pm q,\pm p).$$
 
 Обе координаты такого вектора нечётные, следовательно каждый шаг одновременно
 меняет чётность обеих координат. В точке $(0,0)$ координаты имеют
@@ -133,7 +133,7 @@ $$(n,k) + \frac{u-p}{2}(2d,0) + \frac{v-q}{2}(0,2d) = (dp,dq) + (d(u-p),0) + (0,
     \item Если одно из чисел $p$, $q$ чётно, то
     $$x_1\equiv x_2\pmod d \ \land\ y_1\equiv y_2\pmod d.$$
     \item Если $p$ и $q$ нечётны, то
-    $$\exists i\in\mathbb Z:\quad x_1\equiv x_2+i\cdot d\pmod{2d}
+    $$\exists i\in\mathbb Z:\ x_1\equiv x_2+i\cdot d\pmod{2d}
     \ \land\ y_1\equiv y_2+i\cdot d\pmod{2d}.$$
 \end{enumerate}
 \end{corollary}
@@ -149,10 +149,10 @@ $$(n,k) + \frac{u-p}{2}(2d,0) + \frac{v-q}{2}(0,2d) = (dp,dq) + (d(u-p),0) + (0,
     \item $D_d \leftrightharpoons D_{d,d}$.
 \end{itemize}
 
-
-\begin{lemma}
-    Пусть $p,q$ --- положительные целые числа и $\gcd(n,k) = 1$, $n \equiv k \pmod 2$. Тогда $D_{n,k} \approx S_1$.
-\end{lemma}
+\begin{namedLemma}[Лемма об эквивалентности $S_1$]
+    \label{lemm:equiv_S1}
+    Пусть $n,k$ --- положительные целые числа и $\gcd(n,k) = 1$, $n \not \equiv k \pmod 2$. Тогда $D_{n,k} \approx S_1$.
+\end{namedLemma}
 \textbf{Доказательство.} 
 
 Докажем, что множество автоморфизмов $\langle\Int^2, D_{n,k}\rangle$ сохраняет $\langle\Int^2, S_1\rangle$.
@@ -199,39 +199,194 @@ A = \begin{pmatrix}
 Воспользуемся теоремой Свенониуса\footnote{Текст теоремы взят из источника \cite{Svenonius_Theorem_Model_Theory_Hodges} и приведен в оригинале.}:
 
 \begin{namedTheorem}[Теорема Свенониуса]
-    Let $M=\langle A,\Sigma\rangle$ be a countable structure, and $\Sigma \subset \Sigma'$. Then, for any relation $P \in \Sigma$, the following two conditions are equivalent:
+    Let $M=\langle A,\Sigma\rangle$ be a countable structure, and $\Sigma' \subset \Sigma$. Then, for any relation $P \in \Sigma$, the following two conditions are equivalent:
     \begin{enumerate}
         \item $P$ is not definable in $\Sigma'$.
-        \item There exists an elementary extension $M' = \langle A', \Sigma' \rangle$ of the structure $M'$ and a permutation $\varphi$ of the domain of $A'$, preserving all relations in $\Sigma'$ and not preserving $P$.
+        \item There exists an elementary extension $M' = \langle A', \Sigma \rangle$ of the structure $M$ and a permutation $\varphi$ of the domain of $A'$, preserving all relations in $\Sigma'$ and not preserving $P$.
     \end{enumerate}
 \end{namedTheorem}
 
-Поскольку условие 2 неверно для $M = \langle \Int^2, D_{n,k} \rangle$ и $P = D_{1, 0}$:
+Пусть $M = \langle \Int^2, \{D_{n,k}, D_{1, 0}\} \rangle$, $\Sigma' = \{D_{n,k}\}$ и $P = D_{1, 0}$, а $M^*$ --- полное вверх расширение $M$, описанное выше. Согласно определению~1 из источника \cite{Upward_Complete_Structures_Semenov_Soprunov}, каждое счетное элементарное расширение $M^*$ изоморфно $M^*$. Поскольку $M^*$ является элементарным расширением $M$, определимость $P$ через $\Sigma'$ в $M$ равносильна его определимости через $\Sigma'$ в $M^*$. Поэтому, если условие 2 теоремы Свенониуса выполняется в некотором счетном элементарном расширении $M^*$, соответствующую перестановку можно перенести по изоморфизму на $M^*$. Следовательно, для проверки условия 2 достаточно рассмотреть перестановки области $M^*$, сохраняющие $D_{n,k}$. Как было установлено выше, каждая такая перестановка сохраняет $D_{1,0}$, поэтому условие 2 неверно:
 $$D_{n,k} \succ D_{1, 0}$$
 
-По определению:
+По определению: \temporarytext{Добавить ссылку на построение}
 
 $$E = D_{1, 0} \succ D_{n,k}$$
 
 Тогда $D_{1, 0} \approx D_{n,k} \Then S_1 \approx D_{n,k}$. \hfill $\square$
-
-
 \bs
+
+\textbf{Обозначение.}
+Пусть $F:A\then B$ и $X$ --- произвольное множество. Через
+
+$$F\times\operatorname{id}_X:A\times X\then B\times X$$
+
+обозначим продолжение $F$, сохраняющее координату из $X$:
+
+$$(F\times\operatorname{id}_X)(a,x)=(F(a),x).$$
+
+Если $R$ --- бинарное отношение на $A$, то через $R\times\operatorname{Id}_X$ обозначим его продолжение на $A\times X$, сохраняющее координату из $X$:
+
+$$(R\times\operatorname{Id}_X)((a,x),(b,y)) \Iff R(a,b)\wedge x=y.$$
+\bs
+
+\begin{namedLemma}[Лемма о переносимости определимости]
+    \label{lemm:Definability_Transition}
+    Пусть $R_1 \succ R_2$ на множестве $A$, и существует биекция $\varphi: A \then B$. Тогда $\varphi \circ R_1 \succ \varphi \circ R_2$ на множестве $B$, где $(\varphi \circ R)[\bar{y}] = R(\varphi^{-1}(\bar{y}))$, а $\varphi^{-1}$ применяется к каждой координате кортежа $\bar{y}$.
+\end{namedLemma}
+
+\textbf{Доказательство.}
+    По определению $R_1 \succ R_2$ существует формула $T(\bar{x})$ в языке с отношением $R_1$ и равенством такая, что для каждого кортежа $\bar{a}$ из $A$ выполнено
+
+    $$R_2(\bar{a}) \Iff T(\bar{a}).$$
+
+    Построим формулу $T^{\varphi}(\bar{x})$, заменив в $T$ каждую атомарную формулу $R_1(x_1,\dots,x_m)$ на $(\varphi\circ R_1)(x_1,\dots,x_m)$. Равенства, логические связки и кванторы оставим без изменений.
+
+    Докажем индукцией по построению формулы $T$, что для любой оценки $s$ переменных элементами $A$ выполнено
+
+    $$\langle A,R_1\rangle\models T[s]
+    \Iff
+    \langle B,\varphi\circ R_1\rangle\models T^{\varphi}[\varphi\circ s],$$
+
+    где $(\varphi\circ s)(x)=\varphi(s(x))$.
+
+    Для атомарной формулы с $R_1$ утверждение следует из определения $\varphi\circ R_1$. Для равенства оно следует из биективности $\varphi$. Переход через логические связки следует непосредственно из предположения индукции.
+
+    Рассмотрим квантор существования. Если
+
+    $$\langle A,R_1\rangle\models \exists z\,Q[s],$$
+
+    то существует $a\in A$, для которого $Q$ верно при оценке $s[z\mapsto a]$. По предположению индукции $Q^{\varphi}$ верно в $B$ при оценке $(\varphi\circ s)[z\mapsto\varphi(a)]$, поэтому
+
+    $$\langle B,\varphi\circ R_1\rangle\models \exists z\,Q^{\varphi}[\varphi\circ s].$$
+
+    Обратное следует из сюръективности $\varphi$: для любого $b\in B$ существует $a=\varphi^{-1}(b)\in A$. Случай квантора всеобщности доказывается аналогично. Индукция завершена.
+
+    Теперь возьмем произвольный кортеж $\bar{b}$ из $B$ и положим $\bar{a}=\varphi^{-1}(\bar{b})$. Тогда
+
+    $$(\varphi\circ R_2)[\bar{b}]
+    \Iff R_2(\bar{a})
+    \Iff T(\bar{a})
+    \Iff T^{\varphi}(\bar{b}).$$
+
+    Следовательно, $T^{\varphi}$ определяет $\varphi\circ R_2$ через $\varphi\circ R_1$ на множестве $B$, то есть $\varphi\circ R_1 \succ \varphi\circ R_2$. \hfill $\square$
+\bs
+
+\begin{namedLemma}[Лемма об эквивалентности $D_1$]
+    \label{lemm:equiv_D1}
+    Пусть $n,k$ --- положительные целые числа и $\gcd(n,k) = 1$, $n \equiv k \pmod 2$. Тогда $D_{n,k} \approx D_1$.
+\end{namedLemma}
+\textbf{Доказательство.} Рассмотрим два класса достижимости $RC_{n,k}(0,0)$ и $RC_{n,k}(1,0)$. Заметим, что:
+\begin{itemize}
+    \item $RC_{1,1}(0,0) = RC_{n,k}(0,0) = {(x,y)\ |\ x \equiv y \pmod{2}}$
+    \item $RC_{1,1}(1,0) = RC_{n,k}(1,0) = {(x,y)\ |\ x \not \equiv y \pmod{2}}$
+\end{itemize}
+Рассмотрим преобразование $\phi_1: RC_{1,1}(0,0) \then \Int^2$ такое, что $\phi_1(x,y) = \left(\frac{x+y}{2},\frac{y-x}{2}\right)$.
+
+Пусть $D_{n,k}(x,y) \Iff (x_1, x_2) + (\pm n, \pm k) = (y_1, y_2) \vee (x_1, x_2) + (\pm k, \pm n) = (y_1, y_2)$. 
+
+Не умаляя общности $(x_1, x_2) + (n,k) = (y_1, y_2)$.
+
+Тогда заметим, что:
+
+$$\phi_1(y) = \left(\frac{y_1+y_2}{2},\frac{y_2-y_1}{2}\right) = \left(\frac{x_1+x_2+n+k}{2},\frac{x_2+k-(x_1+n)}{2}\right) = \phi_1(x) + \left(\frac{n+k}{2},\frac{k - n}{2}\right)$$
+
+Аналогично определим:
+
+$$\phi_2: RC_{1,1}(1,0) \then \Int^2\ |\ \phi_2(x,y) = \left(\frac{x-1+y}{2},\frac{y-x+1}{2}\right)$$
+
+$$\Phi : \Int^2 \then \Int^2 \times \{0,1\}\ |\ \Phi(x,y) = 
+\begin{cases}
+    \left(\phi_1(x,y), 0\right), & x \equiv y\pmod 2,\\
+    \left(\phi_2(x,y), 1\right), & x \not \equiv y\pmod 2.
+\end{cases}$$
+
+Автоморфизм $F$ первых двух координат продолжается до $F\times\operatorname{id}_{\{0,1\}}$, а отношения продолжаются до $D_{a,b}\times\operatorname{Id}_{\{0,1\}}$.
+
+Если мы применим $\Phi$, мы можем считать, что работаем со структурой, изоморфной двум галактикам $\Int^2$, и определенных на них отношениях $D_{\frac{n+k}{2},\frac{k - n}{2}}\times\operatorname{Id}_{\{0,1\}}$ и $D_{1,0}\times\operatorname{Id}_{\{0,1\}}$. Применяя теорему Свенониуса аналогично лемме~\ref{lemm:equiv_S1}, получаем
+
+$$D_{\frac{n+k}{2},\frac{k - n}{2}}\times\operatorname{Id}_{\{0,1\}} \approx D_{1,0}\times\operatorname{Id}_{\{0,1\}}$$
+
+в $\Int^2\times\{0,1\}$.
+
+Применив лемму~\ref{lemm:Definability_Transition} к $\Phi^{-1}$, $\langle\Int^2\times\{0,1\},D_{\frac{n+k}{2},\frac{k - n}{2}}\times\operatorname{Id}_{\{0,1\}}\rangle$ и $\langle\Int^2\times\{0,1\},D_{1,0}\times\operatorname{Id}_{\{0,1\}}\rangle$, мы получим искомое утверждение. \hfill $\square$
+
+
 \begin{theorem}
     Пусть $n,k$ --- положительные целые числа, $d=\gcd(n,k)$, $p=\frac{n}{d}$ и $q=\frac{k}{d}$. Тогда:
     
     $$
         D_{n,k} \approx
         \begin{cases}
-            DS_d, & p\not\equiv q\pmod 2,\\
-            DD_d, & p\equiv q\pmod 2.
+            S_d, & p\not\equiv q\pmod 2,\\
+            D_d, & p\equiv q\pmod 2.
         \end{cases}
     $$
 \end{theorem}
-\textbf{Доказательство.} 
+\textbf{Доказательство.}
+Для остатков $i,j$ по модулю $d$ определим
+
+$$C_{i,j}=\left\{(x,y)\in\Int^2\mid x\equiv i\pmod d\wedge y\equiv j\pmod d\right\}.$$
+
+Множества $C_{i,j}$ попарно не пересекаются и в сумме образуют $\Int^2$. Для каждого из них определим биекцию $\phi_{i,j}:C_{i,j}\then\Int^2$:
+
+$$\phi_{i,j}(x,y)=\left(\frac{x-i}{d},\frac{y-j}{d}\right).$$
+
+Положим $X=\Int/d\Int\times\Int/d\Int$ и определим биекцию
+
+$$\Phi:\Int^2\then\Int^2\times X$$
+
+условием
+
+$$\Phi(x,y)=(\phi_{i,j}(x,y),(i,j)),$$
+
+где $i,j\in\{0,\dots,d-1\}$ --- единственные остатки, для которых $(x,y)\in C_{i,j}$.
+
+Так как $n=dp$ и $k=dq$, при сдвиге на $(\pm n,\pm k)$ или $(\pm k,\pm n)$ остатки $i,j$ не изменяются, а первые две координаты после деления на $d$ сдвигаются на $(\pm p,\pm q)$ или $(\pm q,\pm p)$. Поэтому
+
+$$\Phi\circ D_{n,k}=D_{p,q}\times\operatorname{Id}_X.$$
+
 Рассмотрим два случая:
 
-\textbf{Случай 1: $p\not\equiv q\pmod 2$.} 
+\textbf{Случай 1: $p\not\equiv q\pmod 2$.}
+
+Поскольку $S_d\leftrightharpoons D_{d,0}$, сдвиги $(\pm d,0)$ и $(0,\pm d)$ после применения $\Phi$ переходят в сдвиги $(\pm1,0)$ и $(0,\pm1)$ при неизменной координате из $X$. Поэтому
+
+$$\Phi\circ S_d=S_1\times\operatorname{Id}_X.$$
+
+По лемме~\ref{lemm:equiv_S1} выполнено $D_{p,q}\approx S_1$ в $\Int^2$. Продолжая автоморфизмы $F$ до $F\times\operatorname{id}_X$ и применяя теорему Свенониуса аналогично лемме~\ref{lemm:equiv_S1}, получаем
+
+$$D_{p,q}\times\operatorname{Id}_X\approx S_1\times\operatorname{Id}_X,$$
+
+откуда
+
+$$\Phi\circ D_{n,k}\approx\Phi\circ S_d.$$
+
+Применив лемму~\ref{lemm:Definability_Transition} к обоим направлениям определимости и к биекции $\Phi^{-1}$, получаем
+
+$$D_{n,k}\approx S_d.$$
+
+Случай 1 доказан.
 
 \bs
 \textbf{Случай 2: $p\equiv q\pmod 2$.}
+
+Так как $p$ и $q$ взаимно просты, из $p\equiv q\pmod 2$ следует, что $p$ и $q$ нечётны.
+
+Поскольку $D_d\leftrightharpoons D_{d,d}$, сдвиги $(\pm d,\pm d)$ после применения $\Phi$ переходят в сдвиги $(\pm1,\pm1)$ при неизменной координате из $X$. Поэтому
+
+$$\Phi\circ D_d=D_1\times\operatorname{Id}_X.$$
+
+По лемме~\ref{lemm:equiv_D1} выполнено $D_{p,q}\approx D_1$ в $\Int^2$. Продолжая автоморфизмы $F$ до $F\times\operatorname{id}_X$ и применяя теорему Свенониуса аналогично лемме~\ref{lemm:equiv_D1}, получаем
+
+$$D_{p,q}\times\operatorname{Id}_X\approx D_1\times\operatorname{Id}_X,$$
+
+откуда
+
+$$\Phi\circ D_{n,k}\approx\Phi\circ D_d.$$
+
+Применив лемму~\ref{lemm:Definability_Transition} к обоим направлениям определимости и к биекции $\Phi^{-1}$, получаем
+
+$$D_{n,k}\approx D_d.$$
+
+Случай 2 доказан. \hfill $\square$
