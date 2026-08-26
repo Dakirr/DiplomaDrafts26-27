@@ -16,5 +16,9 @@
   problem instead of silently rewriting the user's notation to fix it.
 - Use `$$ ... $$` for display mathematics in both Markdown and LaTeX source.
   Never introduce `\[ ... \]`.
+- Do not use LaTeX notation or math delimiters in chat or console responses,
+  because they are not rendered there. Write mathematical expressions in
+  plain text or ASCII instead. This restriction does not apply when editing
+  LaTeX source files.
 - Preserve the language and terminology of the surrounding source. Do not
   silently translate, rename, normalize, or modernize them.
