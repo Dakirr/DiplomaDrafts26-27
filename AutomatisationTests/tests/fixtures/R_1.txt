@@ -1,0 +1,19 @@
+{
+  "format_version": 1,
+  "name": "R1",
+  "description": "Symbolic Manhattan-distance relation.",
+  "parameters": [
+    {"name": "d", "sort": "Int"}
+  ],
+  "parameter_constraint": "(>= d 0)",
+  "arguments": [
+    {"name": "p", "sort": "Point"},
+    {"name": "q", "sort": "Point"}
+  ],
+  "body": "
+    (= (+ (abs (- p_x q_x))
+          (abs (- p_y q_y)))
+       d)
+  "
+}
+

@@ -1,0 +1,29 @@
+{
+  "format_version": 1,
+  "name": "R1",
+  "description": "S_1",
+  "parameters": [
+  ],
+  "arguments": [
+    {"name": "x", "sort": "Point"},
+    {"name": "y", "sort": "Point"}
+  ],
+  "body": "
+    ( or
+      ( and
+        ( or 
+          (= (+ x_x 1) y_x) 
+          (= (- x_x 1) y_x) 
+        )
+        (= x_y y_y)
+      )
+      ( and
+        ( or
+          (= (+ x_y 1) y_y) 
+          (= (- x_y 1) y_y) 
+        )
+        (= x_x y_x)
+      )
+    )
+  "
+}

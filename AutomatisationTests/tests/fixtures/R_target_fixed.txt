@@ -1,0 +1,17 @@
+{
+  "format_version": 1,
+  "name": "R_target",
+  "description": "Manhattan distance two.",
+  "parameters": [
+    {"name": "d", "sort": "Int", "value": 2}
+  ],
+  "arguments": [
+    {"name": "p", "sort": "Point"},
+    {"name": "q", "sort": "Point"}
+  ],
+  "body": "
+    (= (+ (abs (- p_x q_x))
+          (abs (- p_y q_y)))
+       d)
+  "
+}

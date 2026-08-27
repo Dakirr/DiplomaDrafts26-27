@@ -1,0 +1,18 @@
+{
+  "format_version": 1,
+  "name": "R1",
+  "description": "Manhattan distance one.",
+  "parameters": [
+    {"name": "d", "sort": "Int", "value": 1}
+  ],
+  "arguments": [
+    {"name": "p", "sort": "Point"},
+    {"name": "q", "sort": "Point"}
+  ],
+  "body": "
+    (= (+ (abs (- p_x q_x))
+          (abs (- p_y q_y)))
+       d)
+  "
+}
+

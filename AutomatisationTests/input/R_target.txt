@@ -1,0 +1,37 @@
+{
+  "format_version": 1,
+  "name": "R2",
+  "description": "D_{n,k}",
+  "parameters": [
+    {"name": "n", "sort": "Int"},
+    {"name": "k", "sort": "Int"}
+  ],
+  "arguments": [
+    {"name": "x", "sort": "Point"},
+    {"name": "y", "sort": "Point"}
+  ],
+  "body": "
+    ( or
+      ( and
+        ( or 
+          (= (+ x_x n) y_x) 
+          (= (- x_x n) y_x) 
+        )
+        ( or 
+          (= (+ x_y k) y_y) 
+          (= (- x_y k) y_y) 
+        )
+      )
+      ( and
+        ( or
+          (= (+ x_x k) y_x) 
+          (= (- x_x k) y_x) 
+        )
+        ( or 
+          (= (+ x_y n) y_y) 
+          (= (- x_y n) y_y) 
+        )
+      )
+    )
+  "
+}

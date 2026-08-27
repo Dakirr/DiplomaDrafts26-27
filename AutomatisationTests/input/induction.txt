@@ -1,0 +1,19 @@
+{
+  "format_version": 1,
+  "min_parameter_value": 0,
+  "max_parameter_value": 6,
+  "min_measure": 2,
+  "max_measure": 6,
+  "attempts_per_step": 5,
+  "generalisation_attempts": 50,
+  "generalisation_reasoning_effort": "high",
+  "max_formula_nodes": 100,
+  "parallelism": 10,
+  "generalisation_check": {
+    "default_min_parameter_value": 0,
+    "default_max_parameter_value": 12,
+    "min_measure": 2,
+    "max_measure": 24,
+    "parameter_overrides": {}
+  }
+}

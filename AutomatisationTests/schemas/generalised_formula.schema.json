@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "candidate": {
+      "type": "string",
+      "description": "One S-expression in the restricted formal generalisation DSL."
+    },
+    "explanation": {
+      "type": "string",
+      "description": "A short rationale for the inferred whole-family pattern."
+    }
+  },
+  "required": ["candidate", "explanation"],
+  "additionalProperties": false
+}

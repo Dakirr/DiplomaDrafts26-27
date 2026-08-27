@@ -1,0 +1,18 @@
+{
+  "format_version": 1,
+  "name": "R_target",
+  "description": "The same symbolic relation with reversed arguments.",
+  "parameters": [
+    {"name": "d", "sort": "Int"}
+  ],
+  "parameter_constraint": "(>= d 0)",
+  "arguments": [
+    {"name": "p", "sort": "Point"},
+    {"name": "q", "sort": "Point"}
+  ],
+  "body": "
+    (= (+ (abs (- q_x p_x))
+          (abs (- q_y p_y)))
+       d)
+  "
+}

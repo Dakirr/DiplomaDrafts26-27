@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "candidate": {
+      "type": "string",
+      "description": "One formula in the restricted candidate language."
+    },
+    "explanation": {
+      "type": "string",
+      "description": "A short informal explanation of why the formula may work."
+    }
+  },
+  "required": ["candidate", "explanation"],
+  "additionalProperties": false
+}
+
