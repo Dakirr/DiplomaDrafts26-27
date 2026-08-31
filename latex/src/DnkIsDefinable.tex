@@ -1,0 +1,37 @@
+\subsection{Определимость бинарных отношений}
+\subsubsection{Определимость $D_{n,k}$}
+
+Определим отношение $D_{n,k}(x,y)$ как $x + (\pm n, \pm k) = y \vee x + (\pm k, \pm n) = y$.
+
+Заметим, что отношение $D_{n,k} = D_{k,n}$ и $D_{n,k} = D_{n,-k}$ и $D_{n,k} = D_{-n,k}$.
+
+Будем рассматривать $D_{n,k}$ только для $n \ge k \ge 0$.
+
+Тогда $D_{0,0} \leftrightharpoons x = y$ и $D_{1,0} \leftrightharpoons x \pm (1,0) = y \vee x \pm (0,1) = y$ - исходное отношение.
+
+Докажем определимость $D_{n,k}$.
+
+\begin{theorem}
+    Для любых целых $n \ge k \ge 0$ отношение $D_{n,k}$ определимо через $D_{1,0}$.
+\end{theorem}
+
+\textbf{Доказательство.} 
+
+Рассмотрим несколько случаев:
+
+\begin{enumerate}
+    \item $n = k = 0$.
+        $$D_{0,0} \leftrightharpoons x = y$$
+
+    \item $n = 2t, k = 0$.
+        Определим по рекурсивно: для шага рекурсии необходимо, чтобы было определено $D_{t,0}$.
+        $$D_{2t,0}(x,y) \Iff \exists! z : D_{t,0}(x, z) \wedge D_{t,0}(z, y)$$
+
+    \item $n = 2t + 1, k = 0$.
+        Определим рекурсивно: для шага рекурсии необходимо, чтобы были определены $D_{t,0}$ и $D_{t+1,0}$.
+        $$D_{2t + 1,0}(x,y) \Iff \exists z_1, z_2 : D_{t + 1, 0}(x, z_1) \wedge D_{t,0}(z_1, y) \wedge D_{t,0}(x, z_2) \wedge D_{t+1, 0}(z_2, y) \wedge D_{1, 0} (z_1, z_2)$$
+
+
+    \item $n \ge k \ge 1$
+        $$D_{n,k} \Iff \exists z: D_{n, 0}(x, z) \wedge D_{k, 0}(z, y) \wedge \lnot D_{n+k, 0}(x,y) \wedge \lnot D_{n-k, 0}(x,y)$$
+\end{enumerate}
