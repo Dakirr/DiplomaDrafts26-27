@@ -1,16 +1,22 @@
 # LaTeX workspace
 
-The workspace uses Docker through Colima; Docker Desktop is not required.
+The workspace supports Docker Desktop and Colima. Docker commands use your
+active Docker context (or the `DOCKER_HOST` / `DOCKER_CONTEXT` environment
+variables).
 
-Start Colima explicitly if it is not already running:
+With Docker Desktop, start the application and ensure its Docker connection is
+active. No Colima installation is needed.
+
+With Colima, start the VM explicitly the first time:
 
 ```sh
-make start
+make vm-start
 ```
 
 This starts an `aarch64` VM using Apple's Virtualization framework and Rosetta,
 with `8.8.8.8` and `1.1.1.1` as DNS servers and address-based networking
-enabled.
+enabled. Subsequent builds automatically start Colima if the `colima` context
+is selected and its daemon is unavailable.
 
 Build `main.tex`:
 
@@ -19,8 +25,14 @@ make pdf
 ```
 
 The result is written to `main.pdf`. The first build also creates the local
-Docker image and can take several minutes. Colima is configured separately to
-start automatically when you log in to macOS.
+Docker image and can take several minutes. All build commands check that Docker
+is available before building the image.
+
+Start continuous rebuilding in a background container:
+
+```sh
+make start
+```
 
 ## Split source files
 
@@ -52,8 +64,12 @@ Remove generated LaTeX files:
 make clean
 ```
 
-When you no longer need the virtual machine, stop it with:
+Stop the background watch container:
 
 ```sh
 make stop
 ```
+
+To also stop the Colima virtual machine, run `make vm-stop`. The `vm-start` and
+`vm-stop` targets are specific to Colima; with Docker Desktop, manage the engine
+through the application.
